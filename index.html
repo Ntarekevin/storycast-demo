@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="StoryCast — Audio and video storytelling celebrating the life, magic, and legacy of Ronaldinho, the most joyful footballer the world has ever seen."
+    />
+    <title>
+      StoryCast — From Poverty to Glory: The Early Life of Ronaldinho
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+
+  <body>
+    <!-- Skip Navigation — WCAG 2.4.1 -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ═══════════════════════════════════════════
+       SITE HEADER
+  ════════════════════════════════════════════ -->
+    <header class="site-header" role="banner">
+      <div class="container">
+        <div class="header-inner">
+          <!-- Logo -->
+          <a href="index.html" class="site-logo" aria-label="StoryCast — Home">
+            <div class="logo-mark" aria-hidden="true">
+              <svg
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M10 2L3 6v8l7 4 7-4V6L10 2zm0 2.5L15.5 8 10 11.5 4.5 8 10 4.5zM4 9.5l5.5 3.2V17L4 13.8V9.5zm7.5 3.2L17 9.5v4.3L11.5 17v-4.3z"
+                />
+              </svg>
+            </div>
+            <span class="logo-text">Story<span>Cast</span></span>
+          </a>
+
+          <!-- Primary Navigation -->
+          <nav class="primary-nav" aria-label="Primary navigation">
+            <a href="index.html" aria-current="page">Home</a>
+            <a href="story.html">Stories</a>
+            <a href="about.html">About</a>
+          </nav>
+
+          <!-- Mobile Menu Toggle -->
+          <button
+            class="nav-toggle"
+            aria-controls="mobile-nav"
+            aria-expanded="false"
+            aria-label="Open navigation menu"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <nav
+        class="mobile-nav"
+        id="mobile-nav"
+        aria-label="Mobile navigation"
+        hidden
+      >
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="story.html">Stories</a>
+        <a href="about.html">About &amp; Access</a>
+      </nav>
+    </header>
+
+    <!-- ═══════════════════════════════════════════
+       MAIN CONTENT
+  ════════════════════════════════════════════ -->
+    <main id="main-content">
+      <!-- ── HERO ─────────────────────────────── -->
+      <section
+        class="hero"
+        aria-label="Featured story: From Poverty to Glory — The Early Life of Ronaldinho"
+      >
+        <!-- Background Image with low opacity overlay -->
+        <div class="hero__bg" role="presentation">
+          <img
+            src="assets/images/ronaldinho-hero.jpg"
+            alt=""
+            role="presentation"
+            aria-hidden="true"
+            loading="eager"
+          />
+        </div>
+        <div class="hero__gradient" aria-hidden="true"></div>
+
+        <div class="container">
+          <div class="hero__content">
+            <div class="hero-eyebrow">
+              <span class="badge badge--green live-badge">New Story</span>
+              <span class="eyebrow">Featured Documentary</span>
+            </div>
+
+            <h1 class="hero__title">The <em>Early Life</em> of Ronaldinho</h1>
+
+            <p class="hero__lead">
+              From the <i lang="pt">várzea</i> fields of Porto Alegre to the
+              grand stage of Camp Nou — the story of Ronaldinho Gaúcho, the
+              footballer who made the whole world smile.
+            </p>
+
+            <div class="hero__actions">
+              <a href="story.html" class="btn btn--primary btn--lg">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                Watch the Story
+              </a>
+              <a href="about.html" class="btn btn--secondary btn--lg">
+                Learn About StoryCast
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Decorative scroll indicator -->
+        <div class="hero__scroll" aria-hidden="true">
+          <div class="scroll-line"></div>
+          <span>Scroll</span>
+        </div>
+      </section>
+
+      <!-- ── FEATURED STORIES ─────────────────── -->
+      <section class="section" aria-labelledby="featured-heading">
+        <div class="container">
+          <header class="section-heading">
+            <p class="eyebrow">Stories</p>
+            <h2 id="featured-heading">Told through <em>sound & vision</em></h2>
+            <p>
+              Every story on StoryCast is crafted for deep listening — with full
+              transcripts, captions, and audio descriptions for every piece of
+              content.
+            </p>
+          </header>
+
+          <!-- Featured Grid Layout -->
+          <div class="featured-grid" role="list">
+            <!-- Primary Featured Card -->
+            <div class="featured-primary" role="listitem">
+              <div class="story-card-wrap">
+                <a
+                  href="story.html"
+                  class="story-card story-card--featured"
+                  aria-label="Watch: From Poverty to Glory — The Early Life of Ronaldinho — Documentary"
+                >
+                  <figure class="card-image">
+                    <img
+                      src="assets/images/ronaldinho-barcelona.jpg"
+                      alt="Ronaldinho performing a signature elastico move in a Barcelona shirt, his trademark smile visible as the crowd roars"
+                      loading="lazy"
+                      width="800"
+                      height="450"
+                    />
+                    <div class="card-media-type" aria-label="Video content">
+                      <svg viewBox="0 0 12 12" aria-hidden="true">
+                        <polygon points="2 1 10 6 2 11 2 1" />
+                      </svg>
+                      Video
+                    </div>
+                  </figure>
+                  <div class="card-body">
+                    <div class="card-meta">
+                      <span class="badge badge--gold">Documentary</span>
+                      <span class="card-duration">42 min</span>
+                    </div>
+                    <h3 class="card-title">
+                      From Poverty to Glory: The Early Life of Ronaldinho
+                    </h3>
+                    <p class="card-excerpt">
+                      A deep-dive documentary into the life, magic, and enduring
+                      legacy of Ronaldinho — the player who turned football into
+                      pure joy.
+                    </p>
+                    <div class="card-footer">
+                      <span class="card-author">StoryCast Originals</span>
+                      <span class="card-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 14 14" stroke-width="1.5">
+                          <line x1="2" y1="7" x2="12" y2="7" />
+                          <polyline points="8 3 12 7 8 11" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Secondary Cards -->
+            <div role="listitem">
+              <div class="story-card-wrap">
+                <a
+                  href="story.html#audio-interview"
+                  class="story-card"
+                  aria-label="Listen: The Boy from Beco do Núncio — 18 minute audio interview"
+                >
+                  <figure class="card-image">
+                    <img
+                      src="assets/images/ronaldinho-youth.jpg"
+                      alt="A young boy playing football on a dusty street in Porto Alegre, echoing Ronaldinho's childhood"
+                      loading="lazy"
+                      width="600"
+                      height="338"
+                    />
+                    <div class="card-media-type" aria-label="Audio content">
+                      <svg viewBox="0 0 12 12" aria-hidden="true">
+                        <circle cx="6" cy="6" r="4" fill="currentColor" />
+                        <path
+                          d="M2 6a4 4 0 0 1 8 0"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          fill="none"
+                        />
+                      </svg>
+                      Audio
+                    </div>
+                  </figure>
+                  <div class="card-body">
+                    <div class="card-meta">
+                      <span class="badge badge--clay">Interview</span>
+                      <span class="card-duration">18 min</span>
+                    </div>
+                    <h3 class="card-title">The Boy from Beco do Núncio</h3>
+                    <p class="card-excerpt">
+                      An audio portrait of Ronaldinho's childhood in Porto
+                      Alegre — the streets, the family, and the first kick of a
+                      ball.
+                    </p>
+                    <div class="card-footer">
+                      <span class="card-author">StoryCast Originals</span>
+                      <span class="card-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 14 14" stroke-width="1.5">
+                          <line x1="2" y1="7" x2="12" y2="7" />
+                          <polyline points="8 3 12 7 8 11" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div role="listitem">
+              <div class="story-card-wrap">
+                <a
+                  href="story.html#barcelona-chapter"
+                  class="story-card"
+                  aria-label="Watch: Camp Nou's Favourite Son — 25 minute mini-documentary"
+                >
+                  <figure class="card-image">
+                    <img
+                      src="assets/images/ronaldinho-campnou.jpg"
+                      alt="The Camp Nou crowd giving Ronaldinho a standing ovation after his iconic goal against Real Madrid in 2005"
+                      loading="lazy"
+                      width="600"
+                      height="338"
+                    />
+                    <div class="card-media-type" aria-label="Video content">
+                      <svg viewBox="0 0 12 12" aria-hidden="true">
+                        <polygon points="2 1 10 6 2 11 2 1" />
+                      </svg>
+                      Video
+                    </div>
+                  </figure>
+                  <div class="card-body">
+                    <div class="card-meta">
+                      <span class="badge badge--gold">Mini-Doc</span>
+                      <span class="card-duration">25 min</span>
+                    </div>
+                    <h3 class="card-title">Camp Nou's Favourite Son</h3>
+                    <p class="card-excerpt">
+                      The years at Barcelona that produced the most breathtaking
+                      football ever witnessed — including the goal that made
+                      Real Madrid fans applaud.
+                    </p>
+                    <div class="card-footer">
+                      <span class="card-author">StoryCast Originals</span>
+                      <span class="card-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 14 14" stroke-width="1.5">
+                          <line x1="2" y1="7" x2="12" y2="7" />
+                          <polyline points="8 3 12 7 8 11" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── STATS ─────────────────────────────── -->
+      <section
+        class="section section--dark"
+        aria-label="Ronaldinho by the numbers"
+      >
+        <div class="container">
+          <header class="section-heading section-heading--inverse">
+            <p class="eyebrow">By the Numbers</p>
+            <h2 id="stats-heading">A career that <em>defied</em> statistics</h2>
+          </header>
+
+          <div class="stats-row" role="list" aria-labelledby="stats-heading">
+            <div class="stat-block" role="listitem">
+              <p class="stat-number">2</p>
+              <p class="stat-label">FIFA World Player of the Year Awards</p>
+            </div>
+            <div class="stat-block" role="listitem">
+              <p class="stat-number">94</p>
+              <p class="stat-label">Goals for Barcelona</p>
+            </div>
+            <div class="stat-block" role="listitem">
+              <p class="stat-number">98</p>
+              <p class="stat-label">Brazil Caps</p>
+            </div>
+            <div class="stat-block" role="listitem">
+              <p class="stat-number">1</p>
+              <p class="stat-label">World Cup Winner — 2002</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── PULL QUOTE ─────────────────────────── -->
+      <section
+        class="section section--tinted"
+        aria-label="Quote from Ronaldinho"
+      >
+        <div class="container container--prose">
+          <div class="pull-quote">
+            <blockquote>
+              "I learned all about life with a ball at my feet."
+            </blockquote>
+            <cite>— Ronaldinho Gaúcho</cite>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── ABOUT TEASER ──────────────────────── -->
+      <section class="section" aria-labelledby="about-teaser-heading">
+        <div class="container">
+          <div class="mission-split">
+            <div class="mission-text">
+              <p class="eyebrow">Our Mission</p>
+              <h2 id="about-teaser-heading">
+                Stories told for <em>everyone</em>
+              </h2>
+              <p>
+                StoryCast believes that great storytelling should reach every
+                listener and viewer — regardless of how they experience the
+                world. Every piece of content on this site includes full
+                transcripts, closed captions, and audio descriptions.
+              </p>
+              <p>
+                We build with accessibility first: semantic HTML, WCAG 2.1 AA
+                contrast, keyboard navigation, and ARIA support throughout.
+              </p>
+              <a
+                href="about.html"
+                class="btn btn--ghost"
+                style="margin-top: 1.5rem"
+              >
+                Read our accessibility pledge
+                <svg
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  aria-hidden="true"
+                >
+                  <line x1="2" y1="8" x2="14" y2="8" />
+                  <polyline points="10 4 14 8 10 12" />
+                </svg>
+              </a>
+            </div>
+
+            <div class="mission-visual" aria-hidden="true">
+              <div style="display: flex; flex-direction: column; gap: 1rem">
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    padding: 1rem;
+                    background: rgba(232, 168, 32, 0.06);
+                    border-radius: 8px;
+                    border: 1px solid rgba(232, 168, 32, 0.2);
+                  "
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#E8A820"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span
+                    style="
+                      font-family: &quot;DM Mono&quot;, monospace;
+                      font-size: 0.75rem;
+                      color: #7a4a1e;
+                    "
+                    >Closed captions on all video</span
+                  >
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    padding: 1rem;
+                    background: rgba(232, 168, 32, 0.06);
+                    border-radius: 8px;
+                    border: 1px solid rgba(232, 168, 32, 0.2);
+                  "
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#E8A820"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span
+                    style="
+                      font-family: &quot;DM Mono&quot;, monospace;
+                      font-size: 0.75rem;
+                      color: #7a4a1e;
+                    "
+                    >Full text transcripts for audio</span
+                  >
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    padding: 1rem;
+                    background: rgba(232, 168, 32, 0.06);
+                    border-radius: 8px;
+                    border: 1px solid rgba(232, 168, 32, 0.2);
+                  "
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#E8A820"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span
+                    style="
+                      font-family: &quot;DM Mono&quot;, monospace;
+                      font-size: 0.75rem;
+                      color: #7a4a1e;
+                    "
+                    >Keyboard navigable throughout</span
+                  >
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    padding: 1rem;
+                    background: rgba(232, 168, 32, 0.06);
+                    border-radius: 8px;
+                    border: 1px solid rgba(232, 168, 32, 0.2);
+                  "
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#E8A820"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span
+                    style="
+                      font-family: &quot;DM Mono&quot;, monospace;
+                      font-size: 0.75rem;
+                      color: #7a4a1e;
+                    "
+                    >WCAG 2.1 AA contrast ratios</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ═══════════════════════════════════════════
+       SITE FOOTER
+  ════════════════════════════════════════════ -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a
+              href="index.html"
+              class="site-logo"
+              aria-label="StoryCast — Home"
+            >
+              <div class="logo-mark" aria-hidden="true">
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <path
+                    d="M10 2L3 6v8l7 4 7-4V6L10 2zm0 2.5L15.5 8 10 11.5 4.5 8 10 4.5zM4 9.5l5.5 3.2V17L4 13.8V9.5zm7.5 3.2L17 9.5v4.3L11.5 17v-4.3z"
+                  />
+                </svg>
+              </div>
+              <span class="logo-text">Story<span>Cast</span></span>
+            </a>
+            <p>
+              Audio and video storytelling — crafted for every listener,
+              accessible to all.
+            </p>
+          </div>
+
+          <nav aria-label="Footer navigation — Pages">
+            <p class="footer-nav-heading">Pages</p>
+            <ul class="footer-nav">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="story.html">From Poverty to Glory</a></li>
+              <li><a href="about.html">About &amp; Access</a></li>
+            </ul>
+          </nav>
+
+          <nav aria-label="Footer navigation — Accessibility">
+            <p class="footer-nav-heading">Accessibility</p>
+            <ul class="footer-nav">
+              <li><a href="about.html#accessibility">Our Commitment</a></li>
+              <li>
+                <a href="assets/transcripts/ronaldinho-transcript.txt"
+                  >Download Transcript</a
+                >
+              </li>
+              <li><a href="about.html#keyboard">Keyboard Shortcuts</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2025 StoryCast. All stories told with care.</p>
+          <p>Built with semantic HTML · Sass · Vanilla JS · WCAG 2.1 AA</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,698 @@
+// ============================================================
+// StoryCast — Components
+// ============================================================
+@use 'colors' as *;
+@use 'typography' as *;
+@use 'spacing' as *;
+
+// --- Section Eyebrow Label ---
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-family: $font-mono;
+  font-size: $text-xs;
+  font-weight: $weight-regular;
+  text-transform: uppercase;
+  letter-spacing: $tracking-widest;
+  color: $color-gold;
+  margin-bottom: $space-4;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: $color-gold;
+    flex-shrink: 0;
+  }
+}
+
+// --- Section Heading Block ---
+.section-heading {
+  margin-bottom: $space-12;
+
+  h2 {
+    font-size: $text-2xl;
+    font-weight: $weight-bold;
+    letter-spacing: $tracking-tight;
+    line-height: $leading-tight;
+    color: $color-text-primary;
+
+    @media (min-width: $bp-md) {
+      font-size: $text-3xl;
+    }
+
+    em {
+      font-style: italic;
+      color: $color-gold;
+    }
+  }
+
+  p {
+    margin-top: $space-4;
+    font-size: $text-md;
+    color: $color-text-secondary;
+    max-width: 55ch;
+    line-height: $leading-relaxed;
+  }
+
+  &--inverse {
+    h2 {
+      color: $color-cream;
+    }
+
+    p {
+      color: $color-sand;
+    }
+  }
+}
+
+// --- Buttons ---
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  padding: $space-3 $space-6;
+  font-family: $font-mono;
+  font-size: $text-sm;
+  font-weight: $weight-regular;
+  letter-spacing: $tracking-wide;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: $radius-md;
+  transition: background $transition-fast, color $transition-fast, transform $transition-fast, box-shadow $transition-fast;
+  cursor: pointer;
+  border: 2px solid transparent;
+  white-space: nowrap;
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+}
+
+.btn--primary {
+  background: $color-gold;
+  color: $color-pitch;
+  border-color: $color-gold;
+
+  &:hover {
+    background: $color-gold-light;
+    border-color: $color-gold-light;
+    box-shadow: 0 4px 16px rgba($color-gold, 0.35);
+  }
+}
+
+.btn--secondary {
+  background: transparent;
+  color: $color-cream;
+  border-color: rgba($color-cream, 0.4);
+
+  &:hover {
+    border-color: $color-gold;
+    color: $color-gold;
+  }
+}
+
+.btn--ghost {
+  background: transparent;
+  color: $color-gold;
+  border-color: rgba($color-gold, 0.35);
+
+  &:hover {
+    background: rgba($color-gold, 0.1);
+    border-color: $color-gold;
+  }
+}
+
+.btn--lg {
+  padding: $space-4 $space-8;
+  font-size: $text-base;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+// --- Badge / Tag ---
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: $space-1 $space-3;
+  border-radius: $radius-full;
+  font-family: $font-mono;
+  font-size: $text-xs;
+  font-weight: $weight-regular;
+  letter-spacing: $tracking-wide;
+  text-transform: uppercase;
+
+  &--green {
+    background: rgba($color-verde-light, 0.15);
+    color: $color-verde-light;
+    border: 1px solid rgba($color-verde-light, 0.3);
+  }
+
+  &--gold {
+    background: rgba($color-gold, 0.12);
+    color: $color-gold;
+    border: 1px solid rgba($color-gold, 0.3);
+  }
+
+  &--clay {
+    background: rgba($color-clay, 0.12);
+    color: $color-sand;
+    border: 1px solid rgba($color-clay, 0.3);
+  }
+}
+
+// ============================================================
+// STORY CARD — Container Query Component
+// ============================================================
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-6;
+
+  @media (min-width: $bp-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $bp-lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Container query setup on the card wrapper
+.story-card-wrap {
+  container-type: inline-size;
+  container-name: story-card;
+}
+
+.story-card {
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  text-decoration: none;
+  color: $color-text-primary;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow $transition-base, transform $transition-base;
+  height: 100%;
+
+  &:hover {
+    box-shadow: 0 8px 32px rgba($color-pitch, 0.12);
+    transform: translateY(-3px);
+
+    .card-image img {
+      transform: scale(1.04);
+    }
+  }
+
+  .card-image {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: $color-bark;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform $transition-slow;
+    }
+
+    .card-media-type {
+      position: absolute;
+      bottom: $space-3;
+      left: $space-3;
+      display: flex;
+      align-items: center;
+      gap: $space-2;
+      background: rgba($color-soil, 0.85);
+      backdrop-filter: blur(4px);
+      color: $color-gold;
+      font-family: $font-mono;
+      font-size: $text-xs;
+      letter-spacing: $tracking-wide;
+      padding: $space-1 $space-3;
+      border-radius: $radius-full;
+      text-transform: uppercase;
+
+      svg {
+        width: 12px;
+        height: 12px;
+        fill: currentColor;
+      }
+    }
+  }
+
+  .card-body {
+    padding: $space-6;
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+    flex: 1;
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    flex-wrap: wrap;
+  }
+
+  .card-duration {
+    font-family: $font-mono;
+    font-size: $text-xs;
+    color: $color-text-muted;
+    letter-spacing: $tracking-wide;
+  }
+
+  .card-title {
+    font-size: $text-lg;
+    font-weight: $weight-bold;
+    line-height: $leading-snug;
+    letter-spacing: $tracking-tight;
+    color: $color-text-primary;
+  }
+
+  .card-excerpt {
+    font-size: $text-sm;
+    line-height: $leading-relaxed;
+    color: $color-text-secondary;
+    flex: 1;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: $space-4;
+    border-top: 1px solid $color-border;
+    margin-top: auto;
+  }
+
+  .card-author {
+    font-family: $font-mono;
+    font-size: $text-xs;
+    color: $color-text-muted;
+  }
+
+  .card-arrow {
+    width: 32px;
+    height: 32px;
+    border-radius: $radius-full;
+    border: 1px solid $color-border;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-gold;
+    transition: background $transition-fast, border-color $transition-fast;
+
+    svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+    }
+  }
+
+  &:hover .card-arrow {
+    background: $color-gold;
+    border-color: $color-gold;
+    color: $color-pitch;
+  }
+
+  // --- Container Query: Horizontal layout when card is wide enough ---
+  @container story-card (min-width: 480px) {
+    flex-direction: row;
+
+    .card-image {
+      width: 240px;
+      flex-shrink: 0;
+      aspect-ratio: unset;
+    }
+
+    .card-body {
+      padding: $space-8;
+    }
+
+    .card-title {
+      font-size: $text-xl;
+    }
+  }
+}
+
+// --- Featured Story Card (Hero variant) ---
+.story-card--featured {
+  background: $color-bark;
+  border-color: rgba($color-gold, 0.2);
+  color: $color-cream;
+
+  .card-title {
+    color: $color-cream;
+  }
+
+  .card-excerpt {
+    color: $color-sand;
+  }
+
+  .card-duration,
+  .card-author {
+    color: rgba($color-sand, 0.7);
+  }
+
+  .card-footer {
+    border-top-color: rgba($color-clay, 0.4);
+  }
+
+  .card-arrow {
+    border-color: rgba($color-gold, 0.3);
+    color: $color-gold;
+  }
+}
+
+// --- Media Player Wrapper ---
+.media-player {
+  position: relative;
+  background: $color-soil;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  border: 1px solid rgba($color-gold, 0.15);
+
+  video,
+  audio {
+    width: 100%;
+    display: block;
+  }
+
+  &__caption {
+    padding: $space-4 $space-6;
+    background: rgba($color-pitch, 0.5);
+    font-family: $font-mono;
+    font-size: $text-xs;
+    color: $color-sand;
+    border-top: 1px solid rgba($color-clay, 0.3);
+  }
+}
+
+// --- Audio Player Wrapper ---
+.audio-player {
+  background: $color-parchment;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  padding: $space-6;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  .audio-info {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+  }
+
+  .audio-title {
+    font-family: $font-display;
+    font-size: $text-lg;
+    font-weight: $weight-bold;
+    color: $color-text-primary;
+  }
+
+  .audio-meta {
+    font-family: $font-mono;
+    font-size: $text-xs;
+    color: $color-text-muted;
+    letter-spacing: $tracking-wide;
+    text-transform: uppercase;
+  }
+
+  audio {
+    width: 100%;
+    accent-color: $color-gold;
+  }
+}
+
+// --- Transcript Box ---
+.transcript {
+  background: $color-parchment;
+  border: 1px solid $color-border;
+  border-left: 4px solid $color-gold;
+  border-radius: $radius-md;
+  overflow: hidden;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $space-4 $space-6;
+    background: rgba($color-gold, 0.06);
+    border-bottom: 1px solid $color-border;
+    cursor: pointer;
+
+    h3 {
+      font-family: $font-mono;
+      font-size: $text-sm;
+      font-weight: $weight-regular;
+      letter-spacing: $tracking-wide;
+      text-transform: uppercase;
+      color: $color-gold;
+      display: flex;
+      align-items: center;
+      gap: $space-2;
+    }
+
+    .transcript-toggle-icon {
+      width: 20px;
+      height: 20px;
+      color: $color-gold;
+      transition: transform $transition-base;
+      flex-shrink: 0;
+
+      svg {
+        width: 100%;
+        height: 100%;
+        stroke: currentColor;
+        fill: none;
+      }
+    }
+
+    &[aria-expanded="true"] .transcript-toggle-icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__body {
+    padding: $space-6;
+    max-height: 320px;
+    overflow-y: auto;
+    display: none;
+
+    &.is-open {
+      display: block;
+    }
+
+    p {
+      font-size: $text-sm;
+      line-height: $leading-loose;
+      color: $color-text-secondary;
+      margin-bottom: $space-4;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .ts {
+        font-family: $font-mono;
+        font-size: $text-xs;
+        color: $color-gold;
+        margin-right: $space-3;
+        flex-shrink: 0;
+      }
+    }
+
+    .transcript-line {
+      display: flex;
+      gap: $space-3;
+      margin-bottom: $space-3;
+    }
+  }
+}
+
+// --- Pull Quote ---
+.pull-quote {
+  border-left: 4px solid $color-gold;
+  padding: $space-6 $space-8;
+  margin-block: $space-10;
+  background: rgba($color-gold, 0.04);
+  border-radius: 0 $radius-md $radius-md 0;
+
+  blockquote {
+    font-family: $font-display;
+    font-size: $text-xl;
+    font-style: italic;
+    line-height: $leading-snug;
+    color: $color-text-primary;
+    letter-spacing: $tracking-tight;
+
+    @media (min-width: $bp-md) {
+      font-size: $text-2xl;
+    }
+  }
+
+  cite {
+    display: block;
+    margin-top: $space-4;
+    font-family: $font-mono;
+    font-size: $text-xs;
+    color: $color-gold;
+    letter-spacing: $tracking-wide;
+    text-transform: uppercase;
+    font-style: normal;
+  }
+}
+
+// --- Timeline (About page) ---
+.timeline {
+  position: relative;
+  padding-left: $space-8;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: $space-3;
+    bottom: $space-3;
+    width: 2px;
+    background: linear-gradient(to bottom, $color-gold, rgba($color-gold, 0));
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: $space-10;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: calc(-#{$space-8} - 1px);
+      top: $space-2;
+      width: 10px;
+      height: 10px;
+      border-radius: $radius-full;
+      background: $color-gold;
+      border: 2px solid $color-cream;
+      box-shadow: 0 0 0 3px rgba($color-gold, 0.3);
+    }
+  }
+
+  .timeline-year {
+    font-family: $font-mono;
+    font-size: $text-xs;
+    color: $color-gold;
+    letter-spacing: $tracking-widest;
+    text-transform: uppercase;
+    margin-bottom: $space-1;
+  }
+
+  .timeline-title {
+    font-family: $font-display;
+    font-size: $text-lg;
+    font-weight: $weight-bold;
+    margin-bottom: $space-2;
+    color: $color-text-primary;
+  }
+
+  .timeline-body {
+    font-size: $text-sm;
+    color: $color-text-secondary;
+    line-height: $leading-relaxed;
+  }
+}
+
+// --- Stat Block ---
+.stat-block {
+  text-align: center;
+  padding: $space-8;
+
+  .stat-number {
+    font-family: $font-display;
+    font-size: $text-4xl;
+    font-weight: $weight-black;
+    color: $color-gold;
+    line-height: 1;
+    letter-spacing: $tracking-tight;
+  }
+
+  .stat-label {
+    margin-top: $space-2;
+    font-family: $font-mono;
+    font-size: $text-xs;
+    color: $color-sand;
+    letter-spacing: $tracking-widest;
+    text-transform: uppercase;
+  }
+}
+
+// --- Accessibility Feature Card ---
+.access-card {
+  background: $color-parchment;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  padding: $space-8;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  .access-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba($color-gold, 0.12);
+    border-radius: $radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-gold;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      fill: none;
+    }
+  }
+
+  h3 {
+    font-family: $font-display;
+    font-size: $text-lg;
+    font-weight: $weight-bold;
+    color: $color-text-primary;
+  }
+
+  p {
+    font-size: $text-sm;
+    color: $color-text-secondary;
+    line-height: $leading-relaxed;
+  }
+}
+
+// --- Divider ---
+.divider {
+  border: none;
+  border-top: 1px solid $color-border;
+  margin-block: $space-10;
+
+  &--gold {
+    border-top-color: rgba($color-gold, 0.3);
+  }
+}

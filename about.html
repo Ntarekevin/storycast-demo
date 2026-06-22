@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About &amp; Access | StoryCast</title>
+    <meta
+      name="description"
+      content="Learn about StoryCast's mission and our commitment to web accessibility — WCAG 2.1 AA, transcripts, captions, keyboard navigation and more."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ═══════════════════════════════════════════
+       SITE HEADER
+  ════════════════════════════════════════════ -->
+    <header class="site-header" role="banner">
+      <div class="container">
+        <div class="header-inner">
+          <a href="index.html" class="site-logo" aria-label="StoryCast — Home">
+            <div class="logo-mark" aria-hidden="true">
+              <svg
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M10 2L3 6v8l7 4 7-4V6L10 2zm0 2.5L15.5 8 10 11.5 4.5 8 10 4.5zM4 9.5l5.5 3.2V17L4 13.8V9.5zm7.5 3.2L17 9.5v4.3L11.5 17v-4.3z"
+                />
+              </svg>
+            </div>
+            <span class="logo-text">Story<span>Cast</span></span>
+          </a>
+
+          <nav class="primary-nav" aria-label="Primary navigation">
+            <a href="index.html">Home</a>
+            <a href="story.html">Stories</a>
+            <a href="about.html" aria-current="page">About</a>
+          </nav>
+
+          <button
+            class="nav-toggle"
+            aria-controls="mobile-nav"
+            aria-expanded="false"
+            aria-label="Open navigation menu"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+
+      <nav
+        class="mobile-nav"
+        id="mobile-nav"
+        aria-label="Mobile navigation"
+        hidden
+      >
+        <a href="index.html">Home</a>
+        <a href="story.html">Stories</a>
+        <a href="about.html" aria-current="page">About &amp; Access</a>
+      </nav>
+    </header>
+
+    <!-- ═══════════════════════════════════════════
+       MAIN CONTENT
+  ════════════════════════════════════════════ -->
+    <main id="main-content">
+      <article class="about-container">
+        <section aria-labelledby="about-heading" class="about-section">
+          <h1 id="about-heading" class="section-title">About StoryCast</h1>
+          <p>
+            StoryCast is an interactive microsite designed to showcase the power
+            of audio and video storytelling. This specific edition is dedicated
+            to the legendary Brazilian soccer player,
+            <strong>Ronaldinho Gaúcho</strong>. Our goal is to bring his magical
+            moments to life through immersive, accessible media.
+          </p>
+        </section>
+
+        <section
+          id="accessibility"
+          aria-labelledby="accessibility-heading"
+          class="about-section"
+        >
+          <h2 id="accessibility-heading">Our Commitment to Accessibility</h2>
+          <p>
+            StoryCast was built with inclusivity at its core. We strive to meet
+            the Web Content Accessibility Guidelines (WCAG) 2.1 AA standards.
+            Below are some of the key features we have implemented to ensure a
+            seamless experience for all users:
+          </p>
+
+          <ul class="about-list">
+            <li>
+              <strong>Semantic HTML:</strong> The site uses proper structural
+              elements to convey meaning to assistive technologies.
+            </li>
+            <li id="keyboard">
+              <strong>Keyboard Navigation:</strong> All interactive elements,
+              including media players and navigation links, are fully accessible
+              via keyboard. A "Skip to main content" link is available for
+              screen reader and keyboard users.
+            </li>
+            <li>
+              <strong>Visible Focus States:</strong> We have implemented custom,
+              high-contrast focus rings for keyboard navigation.
+            </li>
+            <li>
+              <strong>Media Transcripts &amp; Captions:</strong> All video and
+              audio stories are accompanied by detailed text transcripts, and
+              videos utilize <code>&lt;track&gt;</code> elements for captions.
+            </li>
+            <li>
+              <strong>Color Contrast:</strong> Our color palette has been
+              carefully selected and tested to ensure sufficient contrast ratios
+              for text and UI components.
+            </li>
+            <li>
+              <strong>Responsive Design:</strong> Content adapts seamlessly to
+              various screen sizes and zoom levels, aided by CSS container
+              queries for component-level adaptability.
+            </li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="engage-heading" class="about-section">
+          <h2 id="engage-heading">Engage with Us</h2>
+          <p>
+            We are constantly looking to improve our platform. If you encounter
+            any accessibility barriers or have suggestions for new stories,
+            please reach out to us at
+            <a href="mailto:hello@storycast.example.com"
+              >hello@storycast.example.com</a
+            >.
+          </p>
+        </section>
+      </article>
+    </main>
+
+    <!-- ═══════════════════════════════════════════
+       SITE FOOTER
+  ════════════════════════════════════════════ -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a
+              href="index.html"
+              class="site-logo"
+              aria-label="StoryCast — Home"
+            >
+              <div class="logo-mark" aria-hidden="true">
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <path
+                    d="M10 2L3 6v8l7 4 7-4V6L10 2zm0 2.5L15.5 8 10 11.5 4.5 8 10 4.5zM4 9.5l5.5 3.2V17L4 13.8V9.5zm7.5 3.2L17 9.5v4.3L11.5 17v-4.3z"
+                  />
+                </svg>
+              </div>
+              <span class="logo-text">Story<span>Cast</span></span>
+            </a>
+            <p>
+              Audio and video storytelling — crafted for every listener,
+              accessible to all.
+            </p>
+          </div>
+
+          <nav aria-label="Footer navigation — Pages">
+            <p class="footer-nav-heading">Pages</p>
+            <ul class="footer-nav">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="story.html">From Poverty to Glory</a></li>
+              <li><a href="about.html">About &amp; Access</a></li>
+            </ul>
+          </nav>
+
+          <nav aria-label="Footer navigation — Accessibility">
+            <p class="footer-nav-heading">Accessibility</p>
+            <ul class="footer-nav">
+              <li><a href="about.html#accessibility">Our Commitment</a></li>
+              <li>
+                <a href="assets/ronaldinho-transcript.txt"
+                  >Download Transcript</a
+                >
+              </li>
+              <li><a href="about.html#keyboard">Keyboard Shortcuts</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2025 StoryCast. All stories told with care.</p>
+          <p>Built with semantic HTML · Sass · Vanilla JS · WCAG 2.1 AA</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
