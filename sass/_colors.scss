@@ -1,0 +1,39 @@
+// ============================================================
+// StoryCast — Color Tokens
+// Palette: Warm & Human — Earthy tones, Gold & Green, Brazilian
+// ============================================================
+
+// --- Core Palette ---
+$color-pitch: #0D0D0B; // near-black, body text base
+$color-soil: #1A1208; // deep warm dark, hero bg
+$color-bark: #3B2A14; // dark brown, card bg
+$color-clay: #7A4A1E; // mid brown, borders
+$color-sand: #C4A97D; // warm sand, secondary text
+$color-parchment: #F2EAD8; // off-white, light bg
+$color-cream: #FAF6EE; // lightest bg, readable surfaces
+
+// --- Accent / Brand ---
+$color-gold: #E8A820; // primary accent — Brazilian gold
+$color-gold-light: #F5C842; // hover state gold
+$color-gold-dark: #B8840F; // pressed / active gold
+$color-verde: #2D6A2F; // Brazilian green
+$color-verde-light: #4A9E4D; // lighter green, tags/badges
+$color-verde-muted: #1E4A20; // deep green, dark surfaces
+
+// --- Semantic ---
+$color-text-primary: $color-pitch;
+$color-text-secondary: $color-clay;
+$color-text-muted: $color-sand;
+$color-text-inverse: $color-cream;
+$color-bg-base: $color-cream;
+$color-bg-dark: $color-soil;
+$color-bg-card: $color-parchment;
+$color-border: rgba($color-clay, 0.25);
+$color-border-strong: $color-clay;
+$color-focus: $color-gold; // WCAG focus ring
+$color-error: #C0392B;
+$color-success: $color-verde-light;
+
+// --- Overlay ---
+$color-overlay: rgba($color-soil, 0.72);
+$color-overlay-light: rgba($color-pitch, 0.45);

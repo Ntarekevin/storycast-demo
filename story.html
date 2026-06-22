@@ -1,0 +1,1461 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Early Life and Family Background of Ronaldinho — Born to poverty in Porto Alegre, shaped by family love and football passion. Watch the documentary or listen to the audio narration with full transcript."
+    />
+    <title>
+      From Poverty to Glory — The Early Life of Ronaldinho — StoryCast
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <style>
+      /* ── Watch / Listen Toggle ── */
+      .media-toggle {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .media-toggle__btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1.25rem;
+        border-radius: 999px;
+        font-family: "DM Mono", monospace;
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        cursor: pointer;
+        border: 1.5px solid rgba(232, 168, 32, 0.35);
+        background: transparent;
+        color: #c8a96e;
+        transition:
+          background 0.18s,
+          color 0.18s,
+          border-color 0.18s;
+      }
+
+      .media-toggle__btn svg {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+      }
+
+      .media-toggle__btn.is-active,
+      .media-toggle__btn:hover {
+        background: #e8a820;
+        color: #1a1208;
+        border-color: #e8a820;
+      }
+
+      /* ── Listen Mode Panel ── */
+      .listen-panel {
+        display: none;
+        background: #1a1208;
+        border: 1px solid rgba(232, 168, 32, 0.2);
+        border-radius: 16px;
+        overflow: hidden;
+      }
+
+      .listen-panel.is-visible {
+        display: block;
+      }
+
+      .listen-panel__header {
+        background: linear-gradient(135deg, #2a1f0a 0%, #1a1208 100%);
+        padding: 2.5rem;
+        text-align: center;
+        border-bottom: 1px solid rgba(232, 168, 32, 0.15);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .listen-panel__header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at 50% 0%,
+          rgba(232, 168, 32, 0.08) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .listen-vinyl {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: conic-gradient(
+          #2a1f0a 0deg,
+          #3d2a0a 45deg,
+          #1a1208 90deg,
+          #2a1f0a 135deg,
+          #3d2a0a 180deg,
+          #1a1208 225deg,
+          #2a1f0a 270deg,
+          #3d2a0a 315deg,
+          #1a1208 360deg
+        );
+        margin: 0 auto 1.5rem;
+        position: relative;
+        box-shadow:
+          0 0 0 3px #e8a820,
+          0 8px 32px rgba(0, 0, 0, 0.5);
+        animation: spinVinyl 12s linear infinite paused;
+      }
+
+      .listen-vinyl.is-spinning {
+        animation-play-state: running;
+      }
+
+      .listen-vinyl::after {
+        content: "";
+        position: absolute;
+        inset: 35%;
+        background: #e8a820;
+        border-radius: 50%;
+        box-shadow: 0 0 0 2px #1a1208;
+      }
+
+      @keyframes spinVinyl {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .listen-panel__title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.25rem;
+        color: #f5e6c8;
+        margin-bottom: 0.5rem;
+      }
+
+      .listen-panel__meta {
+        font-family: "DM Mono", monospace;
+        font-size: 0.7rem;
+        color: #c8a96e;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .listen-panel__controls {
+        padding: 2rem 2.5rem;
+      }
+
+      .listen-panel__note {
+        background: rgba(232, 168, 32, 0.06);
+        border: 1px solid rgba(232, 168, 32, 0.2);
+        border-radius: 8px;
+        padding: 1rem 1.25rem;
+        font-family: "DM Mono", monospace;
+        font-size: 0.72rem;
+        color: #c8a96e;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+      }
+
+      .listen-panel__note a {
+        color: #e8a820;
+        text-decoration: underline;
+      }
+
+      .listen-play-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        width: 100%;
+        padding: 1rem 1.5rem;
+        background: #e8a820;
+        color: #1a1208;
+        border: none;
+        border-radius: 12px;
+        font-family: "DM Mono", monospace;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition:
+          background 0.18s,
+          transform 0.1s;
+        text-decoration: none;
+      }
+
+      .listen-play-btn:hover {
+        background: #f5c842;
+        transform: translateY(-1px);
+      }
+
+      .listen-play-btn svg {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+      }
+
+      /* ── Video wrapper (hidden when listen active) ── */
+      .watch-panel {
+        display: block;
+      }
+
+      .watch-panel.is-hidden {
+        display: none;
+      }
+
+      /* ── Career Timeline ── */
+      .career-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.8rem;
+        margin: 1.5rem 0;
+      }
+
+      .career-table th {
+        font-family: "DM Mono", monospace;
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #e8a820;
+        padding: 0.75rem 1rem;
+        border-bottom: 2px solid rgba(232, 168, 32, 0.3);
+        text-align: left;
+        background: rgba(232, 168, 32, 0.04);
+      }
+
+      .career-table td {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid rgba(122, 74, 30, 0.2);
+        color: #5c3d1a;
+        vertical-align: top;
+        line-height: 1.5;
+      }
+
+      .career-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .career-table td:first-child {
+        font-weight: 700;
+        color: #3a2410;
+        white-space: nowrap;
+      }
+
+      /* ── Chapter nav dots (progress) ── */
+      .chapter-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-family: "DM Mono", monospace;
+        font-size: 0.68rem;
+        color: #e8a820;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+      }
+
+      .chapter-tag::before {
+        content: "";
+        display: inline-block;
+        width: 18px;
+        height: 1px;
+        background: #e8a820;
+      }
+
+      .stat-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin: 1.5rem 0;
+      }
+
+      .stat-chip {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: rgba(232, 168, 32, 0.06);
+        border: 1px solid rgba(232, 168, 32, 0.2);
+        border-radius: 12px;
+        padding: 0.75rem 1.25rem;
+        min-width: 90px;
+      }
+
+      .stat-chip__num {
+        font-family: "Playfair Display", serif;
+        font-size: 1.75rem;
+        font-weight: 900;
+        color: #e8a820;
+        line-height: 1;
+      }
+
+      .stat-chip__label {
+        font-family: "DM Mono", monospace;
+        font-size: 0.6rem;
+        color: #7a4a1e;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-top: 0.25rem;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ═══════════════════════════════════════════
+       SITE HEADER
+  ════════════════════════════════════════════ -->
+    <header class="site-header" role="banner">
+      <div class="container">
+        <div class="header-inner">
+          <a href="index.html" class="site-logo" aria-label="StoryCast — Home">
+            <div class="logo-mark" aria-hidden="true">
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path
+                  d="M10 2L3 6v8l7 4 7-4V6L10 2zm0 2.5L15.5 8 10 11.5 4.5 8 10 4.5zM4 9.5l5.5 3.2V17L4 13.8V9.5zm7.5 3.2L17 9.5v4.3L11.5 17v-4.3z"
+                />
+              </svg>
+            </div>
+            <span class="logo-text">Story<span>Cast</span></span>
+          </a>
+
+          <nav class="primary-nav" aria-label="Primary navigation">
+            <a href="index.html">Home</a>
+            <a href="story.html" aria-current="page">Stories</a>
+            <a href="about.html">About</a>
+          </nav>
+
+          <button
+            class="nav-toggle"
+            aria-controls="mobile-nav"
+            aria-expanded="false"
+            aria-label="Open navigation menu"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+      <nav
+        class="mobile-nav"
+        id="mobile-nav"
+        aria-label="Mobile navigation"
+        hidden
+      >
+        <a href="index.html">Home</a>
+        <a href="story.html" aria-current="page">Stories</a>
+        <a href="about.html">About &amp; Access</a>
+      </nav>
+    </header>
+
+    <!-- ═══════════════════════════════════════════
+       MAIN CONTENT
+  ════════════════════════════════════════════ -->
+    <main id="main-content">
+      <!-- ── STORY HERO ────────────────────────── -->
+      <section class="story-hero" aria-labelledby="story-title">
+        <div class="container">
+          <div class="story-hero-meta">
+            <span class="badge badge--gold">Documentary</span>
+            <span class="badge badge--green">Watch or Listen</span>
+            <span class="badge badge--clay">Full Transcript</span>
+          </div>
+
+          <h1 class="story-hero-title" id="story-title">
+            From <em>Poverty to Glory</em> — The Early Life of Ronaldinho
+          </h1>
+
+          <p class="story-hero-lead">
+            Born on March 21st, 1980, in one of Porto Alegre's poorest
+            neighbourhoods to a family with iron in their blood and football in
+            their hearts. This is the story of how a boy from the roughest
+            streets became shaped by tragedy, unconditional love, and 500 daily
+            juggles — the making of a genius.
+          </p>
+
+          <div class="story-hero-byline">
+            <span>By StoryCast Originals</span>
+            <span class="byline-sep" aria-hidden="true">·</span>
+            <time datetime="2025-06-15">15 June 2025</time>
+            <span class="byline-sep" aria-hidden="true">·</span>
+            <span>Watch · Listen · Read</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── STORY BODY + SIDEBAR ──────────────── -->
+      <div class="container">
+        <div class="story-layout">
+          <!-- MAIN STORY COLUMN -->
+          <article
+            class="story-main"
+            aria-label="Story: From Poverty to Glory — The Early Life of Ronaldinho"
+          >
+            <!-- ── WATCH / LISTEN MEDIA SECTION ── -->
+            <section aria-labelledby="media-section-heading">
+              <h2 id="media-section-heading" class="sr-only">
+                Watch or Listen to the Documentary
+              </h2>
+
+              <!-- Toggle Buttons -->
+              <div
+                class="media-toggle"
+                role="group"
+                aria-label="Choose how to experience this story"
+              >
+                <button
+                  class="media-toggle__btn is-active"
+                  id="btn-watch"
+                  aria-pressed="true"
+                  onclick="switchMode('watch')"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                  Watch
+                </button>
+                <button
+                  class="media-toggle__btn"
+                  id="btn-listen"
+                  aria-pressed="false"
+                  onclick="switchMode('listen')"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                    <path
+                      d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"
+                    ></path>
+                    <path
+                      d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"
+                    ></path>
+                  </svg>
+                  Listen
+                </button>
+              </div>
+
+              <!-- WATCH PANEL — YouTube embed -->
+              <div class="watch-panel" id="watch-panel">
+                <figure>
+                  <div class="media-player">
+                    <div
+                      style="
+                        position: relative;
+                        padding-top: 56.25%;
+                        background: #1a1208;
+                        border-radius: 12px;
+                        overflow: hidden;
+                      "
+                    >
+                      <iframe
+                        id="yt-player"
+                        style="
+                          position: absolute;
+                          inset: 0;
+                          width: 100%;
+                          height: 100%;
+                        "
+                        src="https://www.youtube.com/embed/TZTqEUFtNqA"
+                        title="Ronaldinho: Early Life and Full Career Story"
+                        allow="
+                          accelerometer;
+                          autoplay;
+                          clipboard-write;
+                          encrypted-media;
+                          gyroscope;
+                          picture-in-picture;
+                        "
+                        allowfullscreen
+                        aria-label="Documentary: The full life and career of Ronaldinho Gaúcho. English narration. Captions available in the player."
+                      >
+                      </iframe>
+                    </div>
+                    <div class="media-player__caption">
+                      <strong>Captions</strong> are available — click CC in the
+                      YouTube player. Full text transcript is available below.
+                      Switch to <strong>Listen</strong> for an audio-focused
+                      experience.
+                    </div>
+                  </div>
+                  <figcaption
+                    style="
+                      margin-top: 0.75rem;
+                      font-family: &quot;DM Mono&quot;, monospace;
+                      font-size: 0.72rem;
+                      color: #7a4a1e;
+                    "
+                  >
+                    <strong>Figure 1.</strong> From Poverty to Glory — The Early
+                    Life of Ronaldinho. StoryCast documentary. English
+                    narration. Captions and transcript available.
+                  </figcaption>
+                </figure>
+              </div>
+
+              <!-- LISTEN PANEL — Audio experience -->
+              <div class="listen-panel" id="listen-panel" aria-live="polite">
+                <div class="listen-panel__header">
+                  <div
+                    class="listen-vinyl"
+                    id="listen-vinyl"
+                    aria-hidden="true"
+                  ></div>
+                  <h3 class="listen-panel__title">
+                    From Poverty to Glory — The Early Life of Ronaldinho
+                  </h3>
+                  <p class="listen-panel__meta">
+                    StoryCast Audio · Full Documentary · English Narration
+                  </p>
+                </div>
+                <div class="listen-panel__controls">
+                  <p class="listen-panel__note">
+                    🎧 <strong>Audio experience:</strong> This story is
+                    optimised for listening. Open the documentary on YouTube and
+                    let the narration guide you through Ronaldinho's journey —
+                    or follow the full written transcript below as you listen.
+                    <br /><br />
+                    A plain-text transcript is also available for download
+                    below.
+                  </p>
+                  <a
+                    href="https://www.youtube.com/watch?v=TZTqEUFtNqA"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="listen-play-btn"
+                    id="listen-play-btn"
+                    aria-label="Open the audio documentary on YouTube in a new tab"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      aria-hidden="true"
+                    >
+                      <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                      <path
+                        d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"
+                      ></path>
+                      <path
+                        d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"
+                      ></path>
+                    </svg>
+                    Open &amp; Listen on YouTube
+                  </a>
+                </div>
+              </div>
+
+              <!-- Full Transcript (collapsed) -->
+              <div
+                class="transcript"
+                style="margin-top: 1.5rem"
+                aria-label="Full story transcript"
+                id="main-transcript"
+              >
+                <div
+                  class="transcript__header"
+                  role="button"
+                  tabindex="0"
+                  aria-expanded="false"
+                  aria-controls="transcript-body"
+                  id="transcript-btn"
+                >
+                  <h3>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                      />
+                      <polyline points="14 2 14 8 20 8" />
+                      <line x1="16" y1="13" x2="8" y2="13" />
+                      <line x1="16" y1="17" x2="8" y2="17" />
+                    </svg>
+                    Read Full Transcript
+                  </h3>
+                  <span class="transcript-toggle-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" stroke-width="2">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="transcript__body"
+                  id="transcript-body"
+                  role="region"
+                  aria-labelledby="transcript-btn"
+                >
+                  <div class="transcript-line">
+                    <span class="ts" aria-label="Timestamp 0 minutes 0 seconds"
+                      >[00:00]</span
+                    >
+                    <p>
+                      <strong>[Narrator]</strong> Porto Alegre, Brazil. March
+                      21st, 1980. In one of the city's poorest and roughest
+                      neighbourhoods, a boy named Ronaldo de Assis Moreira is
+                      born. His father, João, is an iron bender, a welder, and a
+                      former footballer. His mother, Megualina, sells cosmetics
+                      and dreams of a better life for her family. The
+                      neighbourhood has very little. But it has football.
+                    </p>
+                  </div>
+                  <div class="transcript-line">
+                    <span class="ts" aria-label="Timestamp 1 minute 5 seconds"
+                      >[01:05]</span
+                    >
+                    <p>
+                      <strong>[Narrator]</strong> Ronaldinho is a self-described
+                      mummy's boy — his mother's unwavering support carrying him
+                      through the darkest chapters. His elder brother Roberto, a
+                      decade older, is not just a sibling. He is a talent, a
+                      mentor, and eventually the most important figure in
+                      Ronaldinho's professional life. When Roberto signs with
+                      Grêmio, the family moves out of a slum and into club
+                      housing — a home with a swimming pool. It feels like a
+                      miracle.
+                    </p>
+                  </div>
+                  <div class="transcript-line">
+                    <span class="ts" aria-label="Timestamp 2 minutes 25 seconds"
+                      >[02:25]</span
+                    >
+                    <p>
+                      <strong>[Narrator]</strong> But the miracle comes with a
+                      shadow. Roberto suffers a devastating knee injury that
+                      ends his playing career. The weight of the family's future
+                      shifts entirely to a small boy with extraordinary feet.
+                      Roberto responds by becoming Ronaldinho's full-time
+                      trainer, agent, and architect. He demands 500 juggles
+                      before training ends. Every. Single. Day. Ronaldinho is
+                      furious. He does them anyway.
+                    </p>
+                  </div>
+                  <div class="transcript-line">
+                    <span class="ts" aria-label="Timestamp 4 minutes 18 seconds"
+                      >[04:18]</span
+                    >
+                    <p>
+                      <strong>[Narrator]</strong> The sessions are meticulous:
+                      bending knees while dribbling, never looking at the ball,
+                      performing moves at a distance from defenders, and —
+                      crucially — accelerating <em>after</em> every move.
+                      Roberto teaches him not just skill, but football
+                      intelligence. The boy who will one day mesmerise the
+                      Bernabéu is being built, rep by rep, in the streets of
+                      Porto Alegre.
+                    </p>
+                  </div>
+                  <div class="transcript-line">
+                    <span class="ts" aria-label="Timestamp 5 minutes 13 seconds"
+                      >[05:13]</span
+                    >
+                    <p>
+                      <strong>[Narrator]</strong> Ronaldinho idolised his father
+                      — a man who told him: play simply, honestly, and do the
+                      right thing on and off the field. In January of an
+                      unspecified year, Ronaldinho's father dies of a heart
+                      attack. Ronaldinho is eight years old. Roberto becomes
+                      both brother and father. Football becomes both escape and
+                      ambition.
+                    </p>
+                  </div>
+                  <div class="transcript-line">
+                    <span class="ts" aria-label="Timestamp 7 minutes 53 seconds"
+                      >[07:53]</span
+                    >
+                    <p>
+                      <strong>[Narrator]</strong> At thirteen, in a single youth
+                      tournament match, Ronaldinho scores 23 goals. The story
+                      circulates through Brazilian football like folklore. His
+                      nickname — Ronaldinho, meaning "small Ronaldo" — is given
+                      in honour of another great Ronaldo already in the game.
+                      Despite being the smallest on every pitch, he is
+                      unmistakably the best. He studies Maradona, Pelé, Zico,
+                      and Rivellino. He absorbs everything.
+                    </p>
+                  </div>
+                  <div class="transcript-line">
+                    <span class="ts" aria-label="Timestamp 9 minutes 18 seconds"
+                      >[09:18]</span
+                    >
+                    <p>
+                      <strong>[Narrator]</strong> At seventeen, he leads
+                      Brazil's Under-17 team to the FIFA U-17 World Championship
+                      in Egypt, winning the tournament's best player award. He
+                      signs his first professional contract with Grêmio and
+                      makes his senior debut at eighteen during the Copa
+                      Libertadores. His journey to Europe begins.
+                    </p>
+                  </div>
+                  <div class="transcript-line">
+                    <span
+                      class="ts"
+                      aria-label="Timestamp 12 minutes 34 seconds"
+                      >[12:34]</span
+                    >
+                    <p>
+                      <strong>[Narrator]</strong> Paris Saint-Germain sign him
+                      for €5 million in 2001. He wears number 10 in his second
+                      season. He scores the Fans' Goal of the Season. The
+                      manager worries about his nightlife. Then Barcelona call —
+                      and Ronaldinho picks up the phone. €30 million. Number 10.
+                      The Camp Nou.
+                    </p>
+                  </div>
+                  <div class="transcript-line">
+                    <span
+                      class="ts"
+                      aria-label="Timestamp 14 minutes 27 seconds"
+                      >[14:27]</span
+                    >
+                    <p>
+                      <strong>[Narrator]</strong> At Barcelona he is reborn. He
+                      debuts to 25,000 fans at the stadium. He ends a seven-year
+                      losing streak against Real Madrid. He wins the FIFA World
+                      Player of the Year in 2004 and again in 2005 —
+                      back-to-back, the first since Zidane. He wins the Ballon
+                      d'Or. He wins La Liga. He wins the Champions League. And
+                      on November 19th, 2005, in the Bernabéu, he scores twice
+                      and receives a standing ovation from 80,000 Real Madrid
+                      supporters. Their own fans. Applauding the opponent. It
+                      had never happened before.
+                    </p>
+                  </div>
+                  <div class="transcript-line">
+                    <span
+                      class="ts"
+                      aria-label="Timestamp 15 minutes 27 seconds"
+                      >[15:27]</span
+                    >
+                    <p>
+                      <strong>[Narrator]</strong> He is also the architect of
+                      Brazil's 2002 World Cup triumph — part of the "Three R's":
+                      Ronaldinho, Ronaldo, Rivaldo. His 30-yard free kick
+                      against England in the quarter-final is one of the
+                      tournament's most discussed moments. The ball arcs over
+                      David Seaman. Brazil goes through. Brazil wins everything.
+                    </p>
+                  </div>
+                  <div class="transcript-line">
+                    <span
+                      class="ts"
+                      aria-label="Timestamp 16 minutes 21 seconds"
+                      >[16:21]</span
+                    >
+                    <p>
+                      <strong>[Narrator]</strong> What follows is complicated.
+                      AC Milan. Flamengo. Atlético Mineiro — where, in 2013, he
+                      wins the Copa Libertadores and is named South American
+                      Footballer of the Year. Legal troubles. Tax disputes. In
+                      2020, he and Roberto are detained in Paraguay for visa
+                      violations. Through it all, that smile — enormous,
+                      uncontainable — never fully disappears.
+                    </p>
+                  </div>
+                  <div class="transcript-line">
+                    <span class="ts" aria-label="Timestamp 17 minutes 0 seconds"
+                      >[17:00]</span
+                    >
+                    <p>
+                      <strong>[Narrator]</strong> Ronaldinho announces his
+                      intention to retire in January 2018. His legacy is not
+                      measured in trophies alone — though those are
+                      considerable. It lives in the way a generation of children
+                      still attempt the elastico in the street. It lives in
+                      YouTube compilations watched by people born after he
+                      retired. It lives in the simple, radical, joyful idea that
+                      football, at its best, is a game.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <hr class="divider divider--gold" style="margin-block: 3rem" />
+
+            <!-- ── CHAPTER 1: EARLY LIFE ── -->
+            <section class="story-body" aria-labelledby="chapter-early-life">
+              <p class="chapter-tag">Chapter One</p>
+              <h2 id="chapter-early-life">
+                Born in <em>poverty</em>, shaped by love
+              </h2>
+
+              <p>
+                Ronaldinho was born on March 21st, 1980, in Porto Alegre, the
+                capital of Rio Grande do Sul. His neighbourhood was one of the
+                poorest and roughest areas in the entire city — a place where
+                opportunity seemed as scarce as clean water. His father, João
+                Moriera, was an iron bender and welder by trade, and a former
+                footballer by passion. His mother, Móguela Díaz — who preferred
+                to be called Megualina — worked as a cosmetic saleswoman before
+                eventually dedicating herself full-time to nursing.
+              </p>
+
+              <p>
+                The family's financial struggles were constant and unforgiving.
+                João's welding business barely sustained them. Yet football
+                flowed through the family's veins like oxygen. Both João and
+                Ronaldinho's elder brothers had football backgrounds. The entire
+                family's hope — their economic salvation, their escape route
+                from the slum — rested entirely on the shoulders of Roberto, who
+                was a decade older than Ronaldinho. When Roberto signed a
+                professional contract with Grêmio, it felt like a miracle. The
+                family moved from the slum into club housing: a home with a
+                swimming pool, amenities they had only dreamed of.
+              </p>
+
+              <div class="pull-quote">
+                <blockquote>
+                  "He was demanding. He was relentless. And he was always
+                  right."
+                </blockquote>
+                <cite>— Ronaldinho, on his brother Roberto</cite>
+              </div>
+
+              <p>
+                But destiny, it seemed, had other plans. Roberto suffered a
+                serious knee injury — the kind that ends careers. Suddenly, the
+                entire weight of the family's financial future transferred to a
+                small boy who barely understood what was happening. Ronaldinho
+                idolised his father despite losing him at a young age; his
+                father's advice was simple and profound:
+                <em
+                  >play simply and honestly, and do the right thing on and off
+                  the field.</em
+                >
+                In January of an unspecified year, Ronaldinho's father died of a
+                heart attack. Ronaldinho was only eight years old.
+              </p>
+
+              <p>
+                Roberto stepped into the void. He became provider, father
+                figure, mentor, and — most crucially — Ronaldinho's full-time
+                trainer and architect. He was demanding and relentless,
+                requiring Ronaldinho to complete up to 500 juggles before any
+                training session could end. Every single day. He taught him
+                meticulous technique: bending knees while dribbling, never
+                staring at the ball, performing moves at a distance from
+                opponents, and — the detail that would define his entire playing
+                style — <em>accelerating after every move</em>, not slowing
+                down. Roberto was building something methodical, something
+                deliberate, something that would eventually change the world's
+                most beautiful sport.
+              </p>
+            </section>
+
+            <hr class="divider" style="margin-block: 3rem" />
+
+            <!-- ── CHAPTER 2: FUTSAL & YOUTH ── -->
+            <section
+              id="futsal-chapter"
+              class="story-body"
+              aria-labelledby="chapter-futsal"
+            >
+              <p class="chapter-tag">Chapter Two</p>
+              <h2 id="chapter-futsal">
+                Futsal, footwork, and the <em>23-goal match</em>
+              </h2>
+
+              <p>
+                Ronaldinho's foundation was built not on full-size pitches with
+                grass, but on the hard courts of futsal — Brazil's five-a-side
+                indoor game. Futsal rewards tight control and split-second
+                creativity in compressed spaces. It forces the mind to think
+                faster than the defenders surrounding it. Every elastico, every
+                no-look pass, every impossible chip that would later appear in
+                slow-motion compilations across the internet — all of it was
+                forged on those small courts in Porto Alegre.
+              </p>
+
+              <p>
+                He combined imagination with technical obsession. He studied
+                Diego Maradona, Pelé, Zico, and Rivellino — absorbing their
+                movements and then adding a language entirely his own. Despite
+                being consistently the smallest player on any pitch, he was
+                unmistakably the best. At thirteen, in a single youth tournament
+                match, he scored 23 goals. The story was almost too
+                extraordinary to believe. But those who had seen him play
+                believed every word.
+              </p>
+
+              <div
+                class="stat-chips"
+                aria-label="Ronaldinho youth career highlights"
+              >
+                <div class="stat-chip">
+                  <span class="stat-chip__num">23</span>
+                  <span class="stat-chip__label"
+                    >Goals in one game, age 13</span
+                  >
+                </div>
+                <div class="stat-chip">
+                  <span class="stat-chip__num">7</span>
+                  <span class="stat-chip__label">Age training started</span>
+                </div>
+                <div class="stat-chip">
+                  <span class="stat-chip__num">500</span>
+                  <span class="stat-chip__label"
+                    >Juggles required before stopping</span
+                  >
+                </div>
+                <div class="stat-chip">
+                  <span class="stat-chip__num">17</span>
+                  <span class="stat-chip__label"
+                    >Age at U-17 World Championship win</span
+                  >
+                </div>
+              </div>
+
+              <p>
+                He led Brazil's Under-17 team to the FIFA U-17 World
+                Championship in Egypt in 1997, winning the tournament's best
+                player award. He signed his first professional contract with
+                Grêmio and made his senior debut at eighteen in the Copa
+                Libertadores. By nineteen he was at the senior World Cup.
+                Everything Roberto had built was beginning to pay dividends at a
+                staggering pace.
+              </p>
+            </section>
+
+            <hr class="divider" style="margin-block: 3rem" />
+
+            <!-- ── CHAPTER 3: BARCELONA ── -->
+            <section
+              id="barcelona-chapter"
+              class="story-body"
+              aria-labelledby="chapter-barcelona"
+            >
+              <p class="chapter-tag">Chapter Three</p>
+              <h2 id="chapter-barcelona">Camp Nou's <em>favourite son</em></h2>
+
+              <p>
+                In 2003, Barcelona were in crisis. They had finished second in
+                La Liga. Ronaldo had left for Real Madrid. The club spent €30
+                million on a 23-year-old Brazilian from Paris Saint-Germain — a
+                player with braided hair, an enormous grin, and the most elastic
+                pair of ankles in world football. He debuted to 25,000 fans at
+                the stadium.
+              </p>
+
+              <p>
+                Within eighteen months, he had been voted FIFA World Player of
+                the Year. Within two years, he had won the award again —
+                back-to-back, the first player since Zinedine Zidane. At Camp
+                Nou, supporters chanted his name before matches even started.
+                Children the world over practised the elastico on playgrounds in
+                his honour.
+              </p>
+
+              <div class="pull-quote">
+                <blockquote>
+                  "He was an alien. The things he did with a ball — we'd been
+                  playing football our whole lives and none of us had seen
+                  anything like it."
+                </blockquote>
+                <cite>— Carles Puyol, Barcelona &amp; Spain</cite>
+              </div>
+
+              <p>
+                The goal at the Bernabéu on November 19th, 2005, remains the
+                most discussed moment of his career. Two minutes into the second
+                half, he received the ball thirty metres from goal and struck it
+                into the top corner. Then he scored again. The 80,000 Real
+                Madrid supporters in the stadium — people who had spent their
+                entire lives despising Barcelona — rose from their seats. Not
+                sarcastically. Not reluctantly. With genuine, stunned, helpless
+                wonder.
+              </p>
+
+              <p>
+                It was not the applause of one man's talent. It was football
+                itself acknowledging something it rarely produces: a player who
+                makes watching the game feel like a privilege.
+              </p>
+            </section>
+
+            <hr class="divider" style="margin-block: 3rem" />
+
+            <!-- ── CHAPTER 4: CAREER TABLE ── -->
+            <section class="story-body" aria-labelledby="chapter-career">
+              <p class="chapter-tag">Chapter Four</p>
+              <h2 id="chapter-career">The full <em>career</em> in numbers</h2>
+
+              <div style="overflow-x: auto">
+                <table
+                  class="career-table"
+                  aria-label="Ronaldinho's European club career statistics"
+                >
+                  <thead>
+                    <tr>
+                      <th scope="col">Club</th>
+                      <th scope="col">Year</th>
+                      <th scope="col">Fee</th>
+                      <th scope="col">No.</th>
+                      <th scope="col">Highlights</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Paris Saint-Germain</td>
+                      <td>2001</td>
+                      <td>€5m</td>
+                      <td>10</td>
+                      <td>
+                        Fans' Goal of the Season; reached Coupe de la Ligue
+                        semi-finals
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>FC Barcelona</td>
+                      <td>2003</td>
+                      <td>€30m</td>
+                      <td>10</td>
+                      <td>
+                        La Liga 04–05; Champions League 05–06; FIFA World Player
+                        of the Year 2004 &amp; 2005; Ballon d'Or 2005
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>AC Milan</td>
+                      <td>2008</td>
+                      <td>—</td>
+                      <td>80</td>
+                      <td>
+                        Serie A title winner; Serie A top assists in his first
+                        season
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Flamengo</td>
+                      <td>2011</td>
+                      <td>—</td>
+                      <td>10</td>
+                      <td>
+                        Multiple state titles; later sued for unpaid salary
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Atlético Mineiro</td>
+                      <td>2012</td>
+                      <td>—</td>
+                      <td>10</td>
+                      <td>
+                        Copa Libertadores winner; South American Footballer of
+                        the Year 2013
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Querétaro / Fluminense</td>
+                      <td>2014–18</td>
+                      <td>—</td>
+                      <td>—</td>
+                      <td>Final professional years; retired January 2018</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p style="margin-top: 1.5rem">
+                His international career was equally extraordinary. As part of
+                Brazil's celebrated "Three R's" — Ronaldinho, Ronaldo, and
+                Rivaldo — he was integral to the 2002 FIFA World Cup win. His
+                30-yard free kick against England in the quarter-final, arcing
+                over goalkeeper David Seaman, remains one of the great World Cup
+                goals. He also won the Confederations Cup with Brazil in 2005.
+              </p>
+            </section>
+
+            <hr class="divider divider--gold" style="margin-block: 3rem" />
+
+            <!-- ── LEGACY ── -->
+            <section class="story-body" aria-labelledby="chapter-legacy">
+              <p class="chapter-tag">Legacy</p>
+              <h2 id="chapter-legacy">
+                The smile that <em>never disappeared</em>
+              </h2>
+
+              <p>
+                The years after Barcelona were complicated. Legal troubles. Tax
+                disputes. A period of detention in Paraguay with Roberto in
+                2020, released after paying fines. Financial difficulties that
+                stripped him of assets. But through it all — through AC Milan
+                and Flamengo and Atlético Mineiro and the smaller clubs and the
+                futsal games in India — that enormous, uncontainable smile never
+                fully left.
+              </p>
+
+              <div class="pull-quote">
+                <blockquote>
+                  "I played because I loved it. Not for the money. Not for the
+                  trophies. Because every time I was on that pitch, I was the
+                  happiest person alive."
+                </blockquote>
+                <cite>— Ronaldinho Gaúcho</cite>
+              </div>
+
+              <p>
+                Ronaldinho's legacy lives not in statistics — though those are
+                considerable — but in something harder to quantify. It lives in
+                YouTube compilations watched by children born after he retired.
+                It lives in the way Brazilian kids still attempt the elastico in
+                the street. It lives in the memory of 80,000 Real Madrid
+                supporters, frozen in collective amazement, rising to their feet
+                for an opponent they were supposed to hate.
+              </p>
+
+              <p>
+                He was, at his peak, proof of something rare: that technical
+                brilliance and uninhibited joy are not opposites. That the most
+                demanding sport in the world, played by its greatest
+                practitioners, can still look like play. That a boy from one of
+                Porto Alegre's roughest streets, shaped by grief and love and
+                500 daily juggles, can make the whole world smile.
+              </p>
+            </section>
+          </article>
+
+          <!-- ── SIDEBAR ── -->
+          <aside
+            class="story-sidebar"
+            aria-label="Related stories and story information"
+          >
+            <!-- Related Stories -->
+            <div class="related-stories" aria-labelledby="related-heading">
+              <h3 id="related-heading">In this Story</h3>
+              <ul class="related-list">
+                <li>
+                  <div class="story-card-wrap">
+                    <a
+                      href="#futsal-chapter"
+                      class="story-card"
+                      aria-label="Jump to: Futsal, footwork, and the 23-goal match"
+                    >
+                      <figure class="card-image">
+                        <img
+                          src="assets/images/ronaldinho-youth.jpg"
+                          alt="Young Ronaldinho on a futsal court in Porto Alegre"
+                          loading="lazy"
+                        />
+                        <div class="card-media-type" aria-label="Chapter">
+                          <svg
+                            viewBox="0 0 12 12"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <rect
+                              x="1"
+                              y="1"
+                              width="10"
+                              height="10"
+                              rx="2"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="1.5"
+                            />
+                            <line
+                              x1="3"
+                              y1="4"
+                              x2="9"
+                              y2="4"
+                              stroke="currentColor"
+                              stroke-width="1.5"
+                            />
+                            <line
+                              x1="3"
+                              y1="6.5"
+                              x2="9"
+                              y2="6.5"
+                              stroke="currentColor"
+                              stroke-width="1.5"
+                            />
+                            <line
+                              x1="3"
+                              y1="9"
+                              x2="6"
+                              y2="9"
+                              stroke="currentColor"
+                              stroke-width="1.5"
+                            />
+                          </svg>
+                          Ch. 2
+                        </div>
+                      </figure>
+                      <div class="card-body">
+                        <div class="card-meta">
+                          <span class="badge badge--clay">Youth</span>
+                          <span class="card-duration">7 min</span>
+                        </div>
+                        <h3 class="card-title" style="font-size: 0.9rem">
+                          Futsal &amp; the 23-Goal Match
+                        </h3>
+                      </div>
+                    </a>
+                  </div>
+                </li>
+                <li>
+                  <div class="story-card-wrap">
+                    <a
+                      href="#barcelona-chapter"
+                      class="story-card"
+                      aria-label="Jump to: Camp Nou's Favourite Son"
+                    >
+                      <figure class="card-image">
+                        <img
+                          src="assets/images/ronaldinho-campnou.jpg"
+                          alt="Camp Nou stadium lit up at night"
+                          loading="lazy"
+                        />
+                        <div class="card-media-type" aria-label="Chapter">
+                          <svg
+                            viewBox="0 0 12 12"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <rect
+                              x="1"
+                              y="1"
+                              width="10"
+                              height="10"
+                              rx="2"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="1.5"
+                            />
+                            <line
+                              x1="3"
+                              y1="4"
+                              x2="9"
+                              y2="4"
+                              stroke="currentColor"
+                              stroke-width="1.5"
+                            />
+                            <line
+                              x1="3"
+                              y1="6.5"
+                              x2="9"
+                              y2="6.5"
+                              stroke="currentColor"
+                              stroke-width="1.5"
+                            />
+                            <line
+                              x1="3"
+                              y1="9"
+                              x2="6"
+                              y2="9"
+                              stroke="currentColor"
+                              stroke-width="1.5"
+                            />
+                          </svg>
+                          Ch. 3
+                        </div>
+                      </figure>
+                      <div class="card-body">
+                        <div class="card-meta">
+                          <span class="badge badge--gold">Barcelona</span>
+                          <span class="card-duration">8 min</span>
+                        </div>
+                        <h3 class="card-title" style="font-size: 0.9rem">
+                          Camp Nou's Favourite Son
+                        </h3>
+                      </div>
+                    </a>
+                  </div>
+                </li>
+                <li>
+                  <div class="story-card-wrap">
+                    <a
+                      href="index.html"
+                      class="story-card"
+                      aria-label="Return to StoryCast Home"
+                    >
+                      <figure class="card-image">
+                        <img
+                          src="assets/images/ronaldinho-hero.jpg"
+                          alt="Ronaldinho smiling with the World Cup trophy"
+                          loading="lazy"
+                        />
+                      </figure>
+                      <div class="card-body">
+                        <div class="card-meta">
+                          <span class="badge badge--green">Explore</span>
+                          <span class="card-duration">Home</span>
+                        </div>
+                        <h3 class="card-title" style="font-size: 0.9rem">
+                          Back to all stories
+                        </h3>
+                      </div>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- About this story facts -->
+            <div class="access-card" aria-labelledby="sidebar-facts-heading">
+              <div class="access-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+              </div>
+              <h3 id="sidebar-facts-heading">About this story</h3>
+              <p
+                style="
+                  font-family: &quot;DM Mono&quot;, monospace;
+                  font-size: 0.7rem;
+                  line-height: 1.9;
+                  color: #7a4a1e;
+                "
+              >
+                <strong>Format:</strong> Documentary Video + Audio<br />
+                <strong>Duration:</strong> ~18 min (YouTube)<br />
+                <strong>Language:</strong> English narration<br />
+                <strong>Captions:</strong> CC button in player<br />
+                <strong>Transcript:</strong> Full text — see above<br />
+                <strong>Chapters:</strong> 4 written chapters<br />
+                <strong>Subject:</strong> Ronaldinho Gaúcho<br />
+                <strong>Published:</strong> 15 June 2025
+              </p>
+              <a
+                href="assets/captions.vtt"
+                download
+                class="btn btn--ghost"
+                style="
+                  font-size: 0.7rem;
+                  padding: 0.5rem 0.75rem;
+                  margin-top: 0.5rem;
+                "
+              >
+                <svg
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  aria-hidden="true"
+                  style="width: 12px; height: 12px"
+                >
+                  <line x1="8" y1="2" x2="8" y2="11" />
+                  <polyline points="5 8 8 11 11 8" />
+                  <line x1="2" y1="14" x2="14" y2="14" />
+                </svg>
+                Download Captions (.vtt)
+              </a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <!-- ═══════════════════════════════════════════
+       SITE FOOTER
+  ════════════════════════════════════════════ -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a
+              href="index.html"
+              class="site-logo"
+              aria-label="StoryCast — Home"
+            >
+              <div class="logo-mark" aria-hidden="true">
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <path
+                    d="M10 2L3 6v8l7 4 7-4V6L10 2zm0 2.5L15.5 8 10 11.5 4.5 8 10 4.5zM4 9.5l5.5 3.2V17L4 13.8V9.5zm7.5 3.2L17 9.5v4.3L11.5 17v-4.3z"
+                  />
+                </svg>
+              </div>
+              <span class="logo-text">Story<span>Cast</span></span>
+            </a>
+            <p>
+              Audio and video storytelling — crafted for every listener,
+              accessible to all.
+            </p>
+          </div>
+          <nav aria-label="Footer navigation — Pages">
+            <p class="footer-nav-heading">Pages</p>
+            <ul class="footer-nav">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="story.html">From Poverty to Glory</a></li>
+              <li><a href="about.html">About &amp; Access</a></li>
+            </ul>
+          </nav>
+          <nav aria-label="Footer navigation — Accessibility">
+            <p class="footer-nav-heading">Accessibility</p>
+            <ul class="footer-nav">
+              <li><a href="about.html#accessibility">Our Commitment</a></li>
+              <li>
+                <a href="assets/captions.vtt" download>Download Captions</a>
+              </li>
+              <li><a href="about.html#keyboard">Keyboard Shortcuts</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 StoryCast. All stories told with care.</p>
+          <p>Built with semantic HTML · Sass · Vanilla JS · WCAG 2.1 AA</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+      // ── Watch / Listen toggle ──────────────────────
+      function switchMode(mode) {
+        const watchPanel = document.getElementById("watch-panel");
+        const listenPanel = document.getElementById("listen-panel");
+        const btnWatch = document.getElementById("btn-watch");
+        const btnListen = document.getElementById("btn-listen");
+        const vinyl = document.getElementById("listen-vinyl");
+
+        if (mode === "listen") {
+          watchPanel.classList.add("is-hidden");
+          listenPanel.classList.add("is-visible");
+          btnWatch.classList.remove("is-active");
+          btnWatch.setAttribute("aria-pressed", "false");
+          btnListen.classList.add("is-active");
+          btnListen.setAttribute("aria-pressed", "true");
+          vinyl.classList.add("is-spinning");
+          listenPanel.focus();
+        } else {
+          watchPanel.classList.remove("is-hidden");
+          listenPanel.classList.remove("is-visible");
+          btnWatch.classList.add("is-active");
+          btnWatch.setAttribute("aria-pressed", "true");
+          btnListen.classList.remove("is-active");
+          btnListen.setAttribute("aria-pressed", "false");
+          vinyl.classList.remove("is-spinning");
+        }
+      }
+    </script>
+  </body>
+</html>
