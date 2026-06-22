@@ -139,7 +139,17 @@
 
       /* ── Video wrapper ── */
       .watch-panel { display: block; }
-      .watch-panel.is-hidden { display: none; }
+      .watch-panel.is-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
 
       /* ── Career / Data Table ── */
       .career-table {
@@ -325,6 +335,7 @@
     <!-- Data + main.js -->
     <script src="../js/stories-data.js"></script>
     <script src="../js/main.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
 
     <script>
       /* ─────────────────────────────────────────────────
@@ -364,23 +375,20 @@
 
         /* ── Video embed URL ── */
         const videoSrc =
-          `https://www.youtube.com/embed/${story.videoId}` +
-          (story.videoStart ? `?start=${story.videoStart}` : "");
+          `https://www.youtube.com/embed/${story.videoId}?enablejsapi=1` +
+          (story.videoStart ? `&start=${story.videoStart}` : "");
 
-        /* ── Listen panel (optional) ── */
-        const listenToggleHtml = story.hasListen
-          ? `<button class="media-toggle__btn" id="btn-listen" aria-pressed="false" onclick="switchMode('listen')">
+        /* ── Listen panel ── */
+        const listenToggleHtml = `<button class="media-toggle__btn" id="btn-listen" aria-pressed="false" onclick="switchMode('listen')">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
                 <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"></path>
                 <path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
               </svg>
               Listen
-            </button>`
-          : "";
+            </button>`;
 
-        const listenPanelHtml = story.hasListen
-          ? `<div class="listen-panel" id="listen-panel" aria-live="polite">
+        const listenPanelHtml = `<div class="listen-panel" id="listen-panel" aria-live="polite">
               <div class="listen-panel__header">
                 <div class="listen-vinyl" id="listen-vinyl" aria-hidden="true"></div>
                 <h3 class="listen-panel__title">${story.listenTitle || story.titlePlain}</h3>
@@ -388,20 +396,14 @@
               </div>
               <div class="listen-panel__controls">
                 <p class="listen-panel__note">${story.listenNote || ""}</p>
-                <a href="https://www.youtube.com/watch?v=${story.videoId}${story.videoStart ? "&t=" + story.videoStart + "s" : ""}"
-                   target="_blank" rel="noopener noreferrer"
-                   class="listen-play-btn" id="listen-play-btn"
-                   aria-label="Open the audio on YouTube in a new tab">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                    <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
-                    <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"></path>
-                    <path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+                <button class="listen-play-btn" id="listen-play-btn" onclick="togglePlayPause()" aria-label="Play/Pause Audio">
+                  <svg id="play-pause-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
                   </svg>
-                  Open &amp; Listen on YouTube
-                </a>
+                  <span id="play-pause-text">Play Audio</span>
+                </button>
               </div>
-            </div>`
-          : "";
+            </div>`;
 
         /* ── Transcript lines ── */
         const transcriptHtml = story.transcript && story.transcript.length
@@ -518,7 +520,7 @@
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <polygon points="5 3 19 12 5 21 5 3"></polygon>
                       </svg>
-                      Watch
+                      Play Video
                     </button>
                     ${listenToggleHtml}
                   </div>
@@ -540,7 +542,7 @@
                         </div>
                         <div class="media-player__caption">
                           <strong>Captions</strong> are available — click CC in the YouTube player.
-                          Full text transcript is available below.${story.hasListen ? " Switch to <strong>Listen</strong> for an audio-focused experience." : ""}
+                          Full text transcript is available below. Switch to <strong>Listen</strong> for an audio-focused experience.
                         </div>
                       </div>
                       <figcaption style="margin-top:0.75rem;font-family:'DM Mono',monospace;font-size:0.72rem;color:#7a4a1e;">
@@ -625,7 +627,6 @@
         const listenPanel = document.getElementById("listen-panel");
         const btnWatch = document.getElementById("btn-watch");
         const btnListen = document.getElementById("btn-listen");
-        const vinyl = document.getElementById("listen-vinyl");
 
         if (mode === "listen" && listenPanel) {
           watchPanel.classList.add("is-hidden");
@@ -634,7 +635,6 @@
           btnWatch.setAttribute("aria-pressed", "false");
           btnListen.classList.add("is-active");
           btnListen.setAttribute("aria-pressed", "true");
-          if (vinyl) vinyl.classList.add("is-spinning");
           listenPanel.focus();
         } else {
           watchPanel.classList.remove("is-hidden");
@@ -645,7 +645,60 @@
             btnListen.classList.remove("is-active");
             btnListen.setAttribute("aria-pressed", "false");
           }
-          if (vinyl) vinyl.classList.remove("is-spinning");
+        }
+      }
+
+      /* ─────────────────────────────────────────
+         YouTube Iframe API
+      ───────────────────────────────────────── */
+      var ytPlayer;
+      function onYouTubeIframeAPIReady() {
+        const iframe = document.getElementById('yt-player');
+        if (iframe) {
+          ytPlayer = new YT.Player('yt-player', {
+            events: {
+              'onStateChange': onPlayerStateChange
+            }
+          });
+        }
+      }
+
+      function onPlayerStateChange(event) {
+        const playPauseIcon = document.getElementById('play-pause-icon');
+        const playPauseText = document.getElementById('play-pause-text');
+        const vinyl = document.getElementById("listen-vinyl");
+        
+        if (event.data === YT.PlayerState.PLAYING) {
+          if (playPauseIcon) {
+            playPauseIcon.innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
+          }
+          if (playPauseText) {
+            playPauseText.innerText = 'Pause';
+          }
+          if (vinyl) {
+             vinyl.classList.add('is-spinning');
+          }
+        } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+          if (playPauseIcon) {
+            playPauseIcon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>';
+          }
+          if (playPauseText) {
+            playPauseText.innerText = 'Play Audio';
+          }
+          if (vinyl) {
+             vinyl.classList.remove('is-spinning');
+          }
+        }
+      }
+
+      function togglePlayPause() {
+        if (ytPlayer && ytPlayer.getPlayerState) {
+          const state = ytPlayer.getPlayerState();
+          if (state === YT.PlayerState.PLAYING) {
+            ytPlayer.pauseVideo();
+          } else {
+            ytPlayer.playVideo();
+          }
         }
       }
 
