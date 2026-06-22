@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Meta tags are set dynamically via JS -->
+    <meta name="description" content="" id="meta-description" />
+    <title id="page-title">Story — StoryCast</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+
+    <style>
+      /* ── Watch / Listen Toggle ── */
+      .media-toggle {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+      }
+      .media-toggle__btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1.25rem;
+        border-radius: 999px;
+        font-family: "DM Mono", monospace;
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        cursor: pointer;
+        border: 1.5px solid rgba(232, 168, 32, 0.35);
+        background: transparent;
+        color: #c8a96e;
+        transition: background 0.18s, color 0.18s, border-color 0.18s;
+      }
+      .media-toggle__btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+      .media-toggle__btn.is-active,
+      .media-toggle__btn:hover {
+        background: #e8a820;
+        color: #1a1208;
+        border-color: #e8a820;
+      }
+
+      /* ── Listen Panel ── */
+      .listen-panel {
+        display: none;
+        background: #1a1208;
+        border: 1px solid rgba(232, 168, 32, 0.2);
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      .listen-panel.is-visible { display: block; }
+      .listen-panel__header {
+        background: linear-gradient(135deg, #2a1f0a 0%, #1a1208 100%);
+        padding: 2.5rem;
+        text-align: center;
+        border-bottom: 1px solid rgba(232, 168, 32, 0.15);
+        position: relative;
+        overflow: hidden;
+      }
+      .listen-panel__header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at 50% 0%, rgba(232, 168, 32, 0.08) 0%, transparent 70%);
+        pointer-events: none;
+      }
+      .listen-vinyl {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: conic-gradient(#2a1f0a 0deg, #3d2a0a 45deg, #1a1208 90deg, #2a1f0a 135deg, #3d2a0a 180deg, #1a1208 225deg, #2a1f0a 270deg, #3d2a0a 315deg, #1a1208 360deg);
+        margin: 0 auto 1.5rem;
+        position: relative;
+        box-shadow: 0 0 0 3px #e8a820, 0 8px 32px rgba(0, 0, 0, 0.5);
+        animation: spinVinyl 12s linear infinite paused;
+      }
+      .listen-vinyl.is-spinning { animation-play-state: running; }
+      .listen-vinyl::after {
+        content: "";
+        position: absolute;
+        inset: 35%;
+        background: #e8a820;
+        border-radius: 50%;
+        box-shadow: 0 0 0 2px #1a1208;
+      }
+      @keyframes spinVinyl { to { transform: rotate(360deg); } }
+      .listen-panel__title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.25rem;
+        color: #f5e6c8;
+        margin-bottom: 0.5rem;
+      }
+      .listen-panel__meta {
+        font-family: "DM Mono", monospace;
+        font-size: 0.7rem;
+        color: #c8a96e;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .listen-panel__controls { padding: 2rem 2.5rem; }
+      .listen-panel__note {
+        background: rgba(232, 168, 32, 0.06);
+        border: 1px solid rgba(232, 168, 32, 0.2);
+        border-radius: 8px;
+        padding: 1rem 1.25rem;
+        font-family: "DM Mono", monospace;
+        font-size: 0.72rem;
+        color: #c8a96e;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+      }
+      .listen-play-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        width: 100%;
+        padding: 1rem 1.5rem;
+        background: #e8a820;
+        color: #1a1208;
+        border: none;
+        border-radius: 12px;
+        font-family: "DM Mono", monospace;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background 0.18s, transform 0.1s;
+        text-decoration: none;
+      }
+      .listen-play-btn:hover { background: #f5c842; transform: translateY(-1px); }
+      .listen-play-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+      /* ── Video wrapper ── */
+      .watch-panel { display: block; }
+      .watch-panel.is-hidden { display: none; }
+
+      /* ── Career / Data Table ── */
+      .career-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.8rem;
+        margin: 1.5rem 0;
+      }
+      .career-table th {
+        font-family: "DM Mono", monospace;
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #e8a820;
+        padding: 0.75rem 1rem;
+        border-bottom: 2px solid rgba(232, 168, 32, 0.3);
+        text-align: left;
+        background: rgba(232, 168, 32, 0.04);
+      }
+      .career-table td {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid rgba(122, 74, 30, 0.2);
+        color: #5c3d1a;
+        vertical-align: top;
+        line-height: 1.5;
+      }
+      .career-table tr:last-child td { border-bottom: none; }
+      .career-table td:first-child { font-weight: 700; color: #3a2410; white-space: nowrap; }
+
+      /* ── Chapter tag ── */
+      .chapter-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-family: "DM Mono", monospace;
+        font-size: 0.68rem;
+        color: #e8a820;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+      }
+      .chapter-tag::before {
+        content: "";
+        display: inline-block;
+        width: 18px;
+        height: 1px;
+        background: #e8a820;
+      }
+
+      /* ── Stat chips ── */
+      .stat-chips { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.5rem 0; }
+      .stat-chip {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: rgba(232, 168, 32, 0.06);
+        border: 1px solid rgba(232, 168, 32, 0.2);
+        border-radius: 12px;
+        padding: 0.75rem 1.25rem;
+        min-width: 90px;
+      }
+      .stat-chip__num {
+        font-family: "Playfair Display", serif;
+        font-size: 1.75rem;
+        font-weight: 900;
+        color: #e8a820;
+        line-height: 1;
+      }
+      .stat-chip__label {
+        font-family: "DM Mono", monospace;
+        font-size: 0.6rem;
+        color: #7a4a1e;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-top: 0.25rem;
+        text-align: center;
+      }
+
+      /* ── 404 / Not Found ── */
+      .not-found {
+        min-height: 60vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 4rem 2rem;
+      }
+      .not-found__code {
+        font-family: "Playfair Display", serif;
+        font-size: 5rem;
+        font-weight: 900;
+        color: #e8a820;
+        line-height: 1;
+        margin-bottom: 1rem;
+      }
+      .not-found__msg {
+        font-family: "DM Mono", monospace;
+        color: #7a4a1e;
+        font-size: 0.85rem;
+        margin-bottom: 2rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ═══════════════════════════════════════════
+       SITE HEADER
+    ════════════════════════════════════════════ -->
+    <header class="site-header" role="banner">
+      <div class="container">
+        <div class="header-inner">
+          <a href="../index.html" class="site-logo" aria-label="StoryCast — Home">
+            
+            <span class="logo-text">StoryCast</span></span>
+          </a>
+
+          <nav class="primary-nav" aria-label="Primary navigation">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#featured-heading" aria-current="page">Stories</a>
+            <a href="../about.html">About</a>
+          </nav>
+
+          <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open navigation menu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
+        <a href="../index.html">Home</a>
+        <a href="../index.html#featured-heading">Stories</a>
+        <a href="../about.html">About &amp; Access</a>
+      </nav>
+    </header>
+
+    <!-- ═══════════════════════════════════════════
+       MAIN CONTENT — rendered by JS
+    ════════════════════════════════════════════ -->
+    <main id="main-content">
+      <!-- JS will render content here -->
+    </main>
+
+    <!-- ═══════════════════════════════════════════
+       SITE FOOTER
+    ════════════════════════════════════════════ -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="../index.html" class="site-logo" aria-label="StoryCast — Home">
+              
+              <span class="logo-text">StoryCast</span></span>
+            </a>
+            <p>Audio and video storytelling — crafted for every listener, accessible to all.</p>
+          </div>
+          <nav aria-label="Footer navigation — Pages">
+            <p class="footer-nav-heading">Pages</p>
+            <ul class="footer-nav">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../index.html#featured-heading">All Stories</a></li>
+              <li><a href="../about.html">About &amp; Access</a></li>
+            </ul>
+          </nav>
+          <nav aria-label="Footer navigation — Accessibility">
+            <p class="footer-nav-heading">Accessibility</p>
+            <ul class="footer-nav">
+              <li><a href="../about.html#accessibility">Our Commitment</a></li>
+              <li><a href="../about.html#keyboard">Keyboard Shortcuts</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 StoryCast. All stories told with care.</p>
+          <p>Built with semantic HTML · Sass · Vanilla JS · WCAG 2.1 AA</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Data + main.js -->
+    <script src="../js/stories-data.js"></script>
+    <script src="../js/main.js"></script>
+
+    <script>
+      /* ─────────────────────────────────────────────────
+         Story Page Renderer
+         Reads ?slug= from URL, finds story in STORIES[],
+         and injects all content into <main>.
+      ───────────────────────────────────────────────── */
+
+      (function () {
+        const params = new URLSearchParams(window.location.search);
+        const slug = params.get("slug");
+        const story = slug ? getStoryBySlug(slug) : null;
+        const main = document.getElementById("main-content");
+
+        /* ── 404 state ── */
+        if (!story) {
+          document.title = "Story Not Found — StoryCast";
+          main.innerHTML = `
+            <div class="container">
+              <div class="not-found">
+                <p class="not-found__code">404</p>
+                <p class="not-found__msg">We couldn't find the story you were looking for.</p>
+                <a href="../index.html" class="btn btn--primary">← Back to all stories</a>
+              </div>
+            </div>`;
+          return;
+        }
+
+        /* ── Page meta ── */
+        document.title = story.titlePlain + " — StoryCast";
+        document.getElementById("meta-description").setAttribute("content", story.lead);
+
+        /* ── Hero badges HTML ── */
+        const heroBadgesHtml = story.heroBadges
+          .map((b) => `<span class="badge ${b.cls}">${b.text}</span>`)
+          .join("\n");
+
+        /* ── Video embed URL ── */
+        const videoSrc =
+          `https://www.youtube.com/embed/${story.videoId}` +
+          (story.videoStart ? `?start=${story.videoStart}` : "");
+
+        /* ── Listen panel (optional) ── */
+        const listenToggleHtml = story.hasListen
+          ? `<button class="media-toggle__btn" id="btn-listen" aria-pressed="false" onclick="switchMode('listen')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"></path>
+                <path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+              </svg>
+              Listen
+            </button>`
+          : "";
+
+        const listenPanelHtml = story.hasListen
+          ? `<div class="listen-panel" id="listen-panel" aria-live="polite">
+              <div class="listen-panel__header">
+                <div class="listen-vinyl" id="listen-vinyl" aria-hidden="true"></div>
+                <h3 class="listen-panel__title">${story.listenTitle || story.titlePlain}</h3>
+                <p class="listen-panel__meta">${story.listenMeta || "StoryCast Audio · English Narration"}</p>
+              </div>
+              <div class="listen-panel__controls">
+                <p class="listen-panel__note">${story.listenNote || ""}</p>
+                <a href="https://www.youtube.com/watch?v=${story.videoId}${story.videoStart ? "&t=" + story.videoStart + "s" : ""}"
+                   target="_blank" rel="noopener noreferrer"
+                   class="listen-play-btn" id="listen-play-btn"
+                   aria-label="Open the audio on YouTube in a new tab">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                    <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"></path>
+                    <path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+                  </svg>
+                  Open &amp; Listen on YouTube
+                </a>
+              </div>
+            </div>`
+          : "";
+
+        /* ── Transcript lines ── */
+        const transcriptHtml = story.transcript && story.transcript.length
+          ? story.transcript
+              .map(
+                (t) =>
+                  `<div class="transcript-line">
+                    <span class="ts" aria-label="Timestamp ${t.tsLabel}">${t.ts}</span>
+                    <p>${t.text}</p>
+                  </div>`
+              )
+              .join("\n")
+          : "<p style='color:#7a4a1e;font-family:\"DM Mono\",monospace;font-size:0.8rem;'>Transcript coming soon.</p>";
+
+        /* ── Chapters ── */
+        const chaptersHtml = story.chapters
+          .map(
+            (ch, i) => `
+            ${i > 0 ? '<hr class="divider" style="margin-block:3rem" />' : ""}
+            <section class="story-body" aria-labelledby="${ch.id}" id="${ch.id}-section">
+              <p class="chapter-tag">${ch.tag}</p>
+              <h2 id="${ch.id}">${ch.title}</h2>
+              ${ch.content}
+            </section>`
+          )
+          .join("\n");
+
+        /* ── Sidebar info rows ── */
+        const si = story.sidebarInfo || {};
+        const sidebarInfoRows = [
+          si.format && `<strong>Format:</strong> ${si.format}`,
+          si.duration && `<strong>Duration:</strong> ${si.duration}`,
+          si.language && `<strong>Language:</strong> ${si.language}`,
+          si.captions && `<strong>Captions:</strong> ${si.captions}`,
+          si.transcript && `<strong>Transcript:</strong> ${si.transcript}`,
+          si.chapters && `<strong>Chapters:</strong> ${si.chapters}`,
+          si.subject && `<strong>Subject:</strong> ${si.subject}`,
+          si.published && `<strong>Published:</strong> ${si.published}`,
+        ]
+          .filter(Boolean)
+          .join("<br />");
+
+        /* ── Related story cards ── */
+        const related = getStoriesBySlugs(story.relatedSlugs || []);
+        const relatedCardsHtml = related
+          .map((r) => {
+            const mediaIconHtml =
+              r.cardMediaType === "Audio"
+                ? `<svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4" fill="currentColor"/><path d="M2 6a4 4 0 0 1 8 0" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>`
+                : `<svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="2 1 10 6 2 11 2 1"/></svg>`;
+            return `
+              <li>
+                <div class="story-card-wrap">
+                  <a href="index.html?slug=${r.slug}" class="story-card"
+                     aria-label="${r.cardMediaType || "Watch"}: ${r.titlePlain}">
+                    <figure class="card-image">
+                      <img src="${r.image}" alt="${r.excerpt}" loading="lazy" />
+                      <div class="card-media-type" aria-label="${r.cardMediaType || "Video"} content">
+                        ${mediaIconHtml}
+                        ${r.cardMediaType || "Video"}
+                      </div>
+                    </figure>
+                    <div class="card-body">
+                      <div class="card-meta">
+                        <span class="badge ${r.cardBadge.cls}">${r.cardBadge.text}</span>
+                        <span class="card-duration">${r.duration}</span>
+                      </div>
+                      <h3 class="card-title" style="font-size:0.9rem">${r.titlePlain}</h3>
+                      <p class="card-excerpt" style="font-size:0.75rem;margin-top:0.35rem;color:#7a4a1e;line-height:1.5;">${r.excerpt}</p>
+                    </div>
+                  </a>
+                </div>
+              </li>`;
+          })
+          .join("\n");
+
+        /* ── Assemble full page ── */
+        main.innerHTML = `
+          <!-- ── STORY HERO ── -->
+          <section class="story-hero" aria-labelledby="story-title">
+            <div class="story-hero__bg" aria-hidden="true" style="position:absolute;inset:0;z-index:1;">
+              <img src="${story.image}" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.4;" />
+              <div style="position:absolute;inset:0;background:linear-gradient(to top, #1A1208 0%, rgba(26,18,8,0.8) 40%, rgba(26,18,8,0.4) 100%);"></div>
+            </div>
+            <div class="container" style="position:relative;z-index:2;">
+              <div class="story-hero-meta">${heroBadgesHtml}</div>
+              <h1 class="story-hero-title" id="story-title">${story.titleHtml}</h1>
+              <p class="story-hero-lead">${story.lead}</p>
+              <div class="story-hero-byline">
+                <span>By ${story.author}</span>
+                <span class="byline-sep" aria-hidden="true">·</span>
+                <time datetime="${story.date}">${story.dateDisplay}</time>
+                <span class="byline-sep" aria-hidden="true">·</span>
+                <span>${story.duration}</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- ── STORY BODY + SIDEBAR ── -->
+          <div class="container">
+            <div class="story-layout">
+
+              <!-- MAIN STORY COLUMN -->
+              <article class="story-main" aria-label="Story: ${story.titlePlain}">
+
+                <!-- ── WATCH / LISTEN MEDIA SECTION ── -->
+                <section aria-labelledby="media-section-heading">
+                  <h2 id="media-section-heading" class="sr-only">Watch or Listen to this Story</h2>
+
+                  <!-- Toggle Buttons -->
+                  <div class="media-toggle" role="group" aria-label="Choose how to experience this story">
+                    <button class="media-toggle__btn is-active" id="btn-watch"
+                            aria-pressed="true" onclick="switchMode('watch')">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                      </svg>
+                      Watch
+                    </button>
+                    ${listenToggleHtml}
+                  </div>
+
+                  <!-- WATCH PANEL -->
+                  <div class="watch-panel" id="watch-panel">
+                    <figure>
+                      <div class="media-player">
+                        <div style="position:relative;padding-top:56.25%;background:#1a1208;border-radius:12px;overflow:hidden;">
+                          <iframe id="yt-player"
+                            style="position:absolute;inset:0;width:100%;height:100%;"
+                            src="${videoSrc}"
+                            title="${story.videoTitle}"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen
+                            aria-label="Documentary video: ${story.videoTitle}">
+                          </iframe>
+                        </div>
+                        <div class="media-player__caption">
+                          <strong>Captions</strong> are available — click CC in the YouTube player.
+                          Full text transcript is available below.${story.hasListen ? " Switch to <strong>Listen</strong> for an audio-focused experience." : ""}
+                        </div>
+                      </div>
+                      <figcaption style="margin-top:0.75rem;font-family:'DM Mono',monospace;font-size:0.72rem;color:#7a4a1e;">
+                        ${story.videoFigcaption}
+                      </figcaption>
+                    </figure>
+                  </div>
+
+                  <!-- LISTEN PANEL -->
+                  ${listenPanelHtml}
+
+                  <!-- Full Transcript -->
+                  <div class="transcript" style="margin-top:1.5rem" aria-label="Full story transcript" id="main-transcript">
+                    <div class="transcript__header" role="button" tabindex="0"
+                         aria-expanded="false" aria-controls="transcript-body" id="transcript-btn">
+                      <h3>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                          <polyline points="14 2 14 8 20 8"/>
+                          <line x1="16" y1="13" x2="8" y2="13"/>
+                          <line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                        Read Full Transcript
+                      </h3>
+                      <span class="transcript-toggle-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                      </span>
+                    </div>
+                    <div class="transcript__body" id="transcript-body" role="region" aria-labelledby="transcript-btn">
+                      ${transcriptHtml}
+                    </div>
+                  </div>
+                </section>
+
+                <hr class="divider divider--gold" style="margin-block:3rem" />
+
+                <!-- ── CHAPTERS ── -->
+                ${chaptersHtml}
+
+              </article>
+
+              <!-- ── SIDEBAR ── -->
+              <aside class="story-sidebar" aria-label="Related stories and story information">
+
+                <!-- Related Stories -->
+                <div class="related-stories" aria-labelledby="related-heading">
+                  <h3 id="related-heading">Related Stories</h3>
+                  <ul class="related-list">
+                    ${relatedCardsHtml}
+                  </ul>
+                </div>
+
+                <!-- About this story -->
+                <div class="access-card" aria-labelledby="sidebar-facts-heading">
+                  <div class="access-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="12"/>
+                      <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                  </div>
+                  <h3 id="sidebar-facts-heading">About this story</h3>
+                  <p style="font-family:'DM Mono',monospace;font-size:0.7rem;line-height:1.9;color:#7a4a1e;">
+                    ${sidebarInfoRows}
+                  </p>
+                </div>
+
+              </aside>
+            </div>
+          </div>`;
+
+        /* ── Re-init transcript toggle after render ── */
+        initTranscriptToggle();
+
+      })();
+
+      /* ─────────────────────────────────────────
+         Watch / Listen toggle
+      ───────────────────────────────────────── */
+      function switchMode(mode) {
+        const watchPanel = document.getElementById("watch-panel");
+        const listenPanel = document.getElementById("listen-panel");
+        const btnWatch = document.getElementById("btn-watch");
+        const btnListen = document.getElementById("btn-listen");
+        const vinyl = document.getElementById("listen-vinyl");
+
+        if (mode === "listen" && listenPanel) {
+          watchPanel.classList.add("is-hidden");
+          listenPanel.classList.add("is-visible");
+          btnWatch.classList.remove("is-active");
+          btnWatch.setAttribute("aria-pressed", "false");
+          btnListen.classList.add("is-active");
+          btnListen.setAttribute("aria-pressed", "true");
+          if (vinyl) vinyl.classList.add("is-spinning");
+          listenPanel.focus();
+        } else {
+          watchPanel.classList.remove("is-hidden");
+          if (listenPanel) listenPanel.classList.remove("is-visible");
+          btnWatch.classList.add("is-active");
+          btnWatch.setAttribute("aria-pressed", "true");
+          if (btnListen) {
+            btnListen.classList.remove("is-active");
+            btnListen.setAttribute("aria-pressed", "false");
+          }
+          if (vinyl) vinyl.classList.remove("is-spinning");
+        }
+      }
+
+      /* ─────────────────────────────────────────
+         Transcript toggle (called after render)
+      ───────────────────────────────────────── */
+      function initTranscriptToggle() {
+        const btn = document.getElementById("transcript-btn");
+        const body = document.getElementById("transcript-body");
+        if (!btn || !body) return;
+
+        function toggle() {
+          const isOpen = btn.getAttribute("aria-expanded") === "true";
+          btn.setAttribute("aria-expanded", String(!isOpen));
+          body.classList.toggle("is-open", !isOpen);
+        }
+        btn.addEventListener("click", toggle);
+        btn.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); }
+        });
+      }
+    </script>
+  </body>
+</html>

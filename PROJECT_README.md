@@ -1,4 +1,4 @@
-# StoryCast - Ronaldinho Gaúcho Edition ⚽✨
+# StoryCast - Ronaldinho Gaúcho Edition
 
 Welcome to the **StoryCast** microsite project, a dedicated, interactive web experience showcasing the magical moments of Brazilian football legend, Ronaldinho Gaúcho. 
 
@@ -6,7 +6,7 @@ This project was built from the ground up focusing heavily on **modern web stand
 
 ---
 
-## 🌟 Features
+##  Features
 
 - **Semantic HTML5:** Built with an articulate document structure using elements like `<article>`, `<figure>`, `<nav>`, and `<main>`.
 - **Advanced CSS & SASS:** Employs a robust SASS architecture using partials, tokens, and variables. Features modern CSS Grid and Flexbox layouts, as well as **CSS Container Queries** for highly adaptable component scaling.
@@ -41,7 +41,7 @@ This project was built from the ground up focusing heavily on **modern web stand
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 This project is entirely static and requires no complicated backend server to run.
 
@@ -67,7 +67,7 @@ If you wish to adjust the theme or styling, you will need to compile the SASS fi
 
 ---
 
-## 🎨 Design & Theme
+##  Design & Theme
 
 The UI uses a dark mode aesthetic designed to look premium and engaging. The color palette draws subtle inspiration from the Brazilian flag, utilizing:
 - **Slate (Deep Blue/Grey):** For elegant backgrounds.
